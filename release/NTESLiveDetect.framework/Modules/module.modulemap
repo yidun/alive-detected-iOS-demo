@@ -1,0 +1,6 @@
+framework module NTESLiveDetect {
+  umbrella header "NTESLiveDetect.h"
+
+  export *
+  module * { export * }
+}

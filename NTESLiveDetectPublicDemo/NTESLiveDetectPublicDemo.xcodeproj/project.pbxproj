@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01900213E43E07608CF3DDC8 /* libPods-NTESLiveDetectPublicDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */; };
+		DC0A72582359AEBB0005B960 /* open-eyes.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72542359AEBB0005B960 /* open-eyes.wav */; };
+		DC0A72592359AEBB0005B960 /* open-mouth.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72552359AEBB0005B960 /* open-mouth.wav */; };
+		DC0A725A2359AEBB0005B960 /* turn-right.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72562359AEBB0005B960 /* turn-right.wav */; };
+		DC0A725B2359AEBB0005B960 /* turn-left.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72572359AEBB0005B960 /* turn-left.wav */; };
+		DC1223AF237D365100357EFD /* NTESLiveDetect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1223AD237D365100357EFD /* NTESLiveDetect.framework */; };
+		DC1223B0237D365100357EFD /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1223AE237D365100357EFD /* opencv2.framework */; };
+		DC1F9474234ED6F400EDB465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9473234ED6F400EDB465 /* AppDelegate.m */; };
+		DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9476234ED6F400EDB465 /* SceneDelegate.m */; };
+		DC1F947D234ED6F400EDB465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1F947B234ED6F400EDB465 /* Main.storyboard */; };
+		DC1F947F234ED6F700EDB465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC1F947E234ED6F700EDB465 /* Assets.xcassets */; };
+		DC1F9482234ED6F700EDB465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1F9480234ED6F700EDB465 /* LaunchScreen.storyboard */; };
+		DC1F9485234ED6F700EDB465 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9484234ED6F700EDB465 /* main.m */; };
+		DC1F948E234ED78F00EDB465 /* NTESLDHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */; };
+		DC1F9496234EDDF000EDB465 /* NTESBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9494234EDDF000EDB465 /* NTESBaseViewController.m */; };
+		DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */; };
+		DC1F94A8234F591400EDB465 /* NTESLiveDetectBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */; };
+		DC1F94AD234F59B300EDB465 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94AC234F59B300EDB465 /* AVFoundation.framework */; };
+		DC1F94AF234F59B900EDB465 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94AE234F59B900EDB465 /* CoreMedia.framework */; };
+		DC1F94B1234F59CC00EDB465 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */; };
+		DC1F94B3234F59D100EDB465 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94B2234F59D100EDB465 /* CoreData.framework */; };
+		DC1F94B62350275400EDB465 /* NTESLDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */; };
+		DC1F94BB23507E5900EDB465 /* UIImageView+NTESLDGif.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */; };
+		DC1F94C9235086BB00EDB465 /* open-eyes.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C5235086BB00EDB465 /* open-eyes.gif */; };
+		DC1F94CA235086BB00EDB465 /* turn-right.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C6235086BB00EDB465 /* turn-right.gif */; };
+		DC1F94CB235086BB00EDB465 /* turn-left.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C7235086BB00EDB465 /* turn-left.gif */; };
+		DC1F94CC235086BB00EDB465 /* open-mouth.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C8235086BB00EDB465 /* open-mouth.gif */; };
+		DC1F94DD235415DC00EDB465 /* NTESLiveDetectView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94DC235415DC00EDB465 /* NTESLiveDetectView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NTESLiveDetectPublicDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTESLiveDetectPublicDemo.release.xcconfig"; path = "Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DC0A72542359AEBB0005B960 /* open-eyes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-eyes.wav"; sourceTree = "<group>"; };
+		DC0A72552359AEBB0005B960 /* open-mouth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-mouth.wav"; sourceTree = "<group>"; };
+		DC0A72562359AEBB0005B960 /* turn-right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-right.wav"; sourceTree = "<group>"; };
+		DC0A72572359AEBB0005B960 /* turn-left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-left.wav"; sourceTree = "<group>"; };
+		DC1223AD237D365100357EFD /* NTESLiveDetect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESLiveDetect.framework; path = SDK/NTESLiveDetect.framework; sourceTree = "<group>"; };
+		DC1223AE237D365100357EFD /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = SDK/opencv2.framework; sourceTree = "<group>"; };
+		DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "活体检测Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC1F9472234ED6F400EDB465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DC1F9473234ED6F400EDB465 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DC1F9475234ED6F400EDB465 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		DC1F9476234ED6F400EDB465 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		DC1F947C234ED6F400EDB465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DC1F947E234ED6F700EDB465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC1F9481234ED6F700EDB465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DC1F9483234ED6F700EDB465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC1F9484234ED6F700EDB465 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DC1F948C234ED78E00EDB465 /* NTESLDHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESLDHomePageViewController.h; sourceTree = "<group>"; };
+		DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESLDHomePageViewController.m; sourceTree = "<group>"; };
+		DC1F9492234EDB2100EDB465 /* LDDemoDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LDDemoDefines.h; sourceTree = "<group>"; };
+		DC1F9494234EDDF000EDB465 /* NTESBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESBaseViewController.m; sourceTree = "<group>"; };
+		DC1F9495234EDDF000EDB465 /* NTESBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESBaseViewController.h; sourceTree = "<group>"; };
+		DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESLDSuccessViewController.m; sourceTree = "<group>"; };
+		DC1F9499234F2EE400EDB465 /* NTESLDSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESLDSuccessViewController.h; sourceTree = "<group>"; };
+		DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NTESLiveDetectBundle.bundle; path = SDK/NTESLiveDetectBundle.bundle; sourceTree = "<group>"; };
+		DC1F94AC234F59B300EDB465 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DC1F94AE234F59B900EDB465 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		DC1F94B2234F59D100EDB465 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DC1F94B42350275400EDB465 /* NTESLDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESLDMainViewController.h; sourceTree = "<group>"; };
+		DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESLDMainViewController.m; sourceTree = "<group>"; };
+		DC1F94B923507E5900EDB465 /* UIImageView+NTESLDGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NTESLDGif.h"; sourceTree = "<group>"; };
+		DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NTESLDGif.m"; sourceTree = "<group>"; };
+		DC1F94C5235086BB00EDB465 /* open-eyes.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "open-eyes.gif"; sourceTree = "<group>"; };
+		DC1F94C6235086BB00EDB465 /* turn-right.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "turn-right.gif"; sourceTree = "<group>"; };
+		DC1F94C7235086BB00EDB465 /* turn-left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "turn-left.gif"; sourceTree = "<group>"; };
+		DC1F94C8235086BB00EDB465 /* open-mouth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "open-mouth.gif"; sourceTree = "<group>"; };
+		DC1F94DB235415DC00EDB465 /* NTESLiveDetectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESLiveDetectView.h; sourceTree = "<group>"; };
+		DC1F94DC235415DC00EDB465 /* NTESLiveDetectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESLiveDetectView.m; sourceTree = "<group>"; };
+		F1E1CD5ADA730AB3275AE4E3 /* Pods-NTESLiveDetectPublicDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTESLiveDetectPublicDemo.debug.xcconfig"; path = "Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC1F946C234ED6F400EDB465 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC1F94B3234F59D100EDB465 /* CoreData.framework in Frameworks */,
+				DC1F94B1234F59CC00EDB465 /* AssetsLibrary.framework in Frameworks */,
+				DC1223B0237D365100357EFD /* opencv2.framework in Frameworks */,
+				DC1F94AF234F59B900EDB465 /* CoreMedia.framework in Frameworks */,
+				DC1F94AD234F59B300EDB465 /* AVFoundation.framework in Frameworks */,
+				DC1223AF237D365100357EFD /* NTESLiveDetect.framework in Frameworks */,
+				01900213E43E07608CF3DDC8 /* libPods-NTESLiveDetectPublicDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		199C6346346A0B274C343D33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1CD5ADA730AB3275AE4E3 /* Pods-NTESLiveDetectPublicDemo.debug.xcconfig */,
+				99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C069EB17370F5EBB0C5EE2BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC1223AD237D365100357EFD /* NTESLiveDetect.framework */,
+				DC1223AE237D365100357EFD /* opencv2.framework */,
+				DC1F94B2234F59D100EDB465 /* CoreData.framework */,
+				DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */,
+				DC1F94AE234F59B900EDB465 /* CoreMedia.framework */,
+				DC1F94AC234F59B300EDB465 /* AVFoundation.framework */,
+				1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC0A72482359AC850005B960 /* WavMusic */ = {
+			isa = PBXGroup;
+			children = (
+				DC0A72542359AEBB0005B960 /* open-eyes.wav */,
+				DC0A72552359AEBB0005B960 /* open-mouth.wav */,
+				DC0A72572359AEBB0005B960 /* turn-left.wav */,
+				DC0A72562359AEBB0005B960 /* turn-right.wav */,
+			);
+			path = WavMusic;
+			sourceTree = "<group>";
+		};
+		DC1F9466234ED6F400EDB465 = {
+			isa = PBXGroup;
+			children = (
+				DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */,
+				DC1F9471234ED6F400EDB465 /* NTESLiveDetectPublicDemo */,
+				DC1F9470234ED6F400EDB465 /* Products */,
+				199C6346346A0B274C343D33 /* Pods */,
+				C069EB17370F5EBB0C5EE2BD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DC1F9470234ED6F400EDB465 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC1F9471234ED6F400EDB465 /* NTESLiveDetectPublicDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DC0A72482359AC850005B960 /* WavMusic */,
+				DC1F94BC2350851500EDB465 /* GifPic */,
+				DC1F94B823507E4B00EDB465 /* View */,
+				DC1F9497234F2EB400EDB465 /* LiveDetct */,
+				DC1F9493234EDDDC00EDB465 /* BaseVC */,
+				DC1F9472234ED6F400EDB465 /* AppDelegate.h */,
+				DC1F9473234ED6F400EDB465 /* AppDelegate.m */,
+				DC1F9475234ED6F400EDB465 /* SceneDelegate.h */,
+				DC1F9476234ED6F400EDB465 /* SceneDelegate.m */,
+				DC1F9492234EDB2100EDB465 /* LDDemoDefines.h */,
+				DC1F947B234ED6F400EDB465 /* Main.storyboard */,
+				DC1F947E234ED6F700EDB465 /* Assets.xcassets */,
+				DC1F9480234ED6F700EDB465 /* LaunchScreen.storyboard */,
+				DC1F9483234ED6F700EDB465 /* Info.plist */,
+				DC1F9484234ED6F700EDB465 /* main.m */,
+			);
+			path = NTESLiveDetectPublicDemo;
+			sourceTree = "<group>";
+		};
+		DC1F9493234EDDDC00EDB465 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				DC1F9495234EDDF000EDB465 /* NTESBaseViewController.h */,
+				DC1F9494234EDDF000EDB465 /* NTESBaseViewController.m */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		DC1F9497234F2EB400EDB465 /* LiveDetct */ = {
+			isa = PBXGroup;
+			children = (
+				DC1F948C234ED78E00EDB465 /* NTESLDHomePageViewController.h */,
+				DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */,
+				DC1F94B42350275400EDB465 /* NTESLDMainViewController.h */,
+				DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */,
+				DC1F9499234F2EE400EDB465 /* NTESLDSuccessViewController.h */,
+				DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */,
+			);
+			path = LiveDetct;
+			sourceTree = "<group>";
+		};
+		DC1F94B823507E4B00EDB465 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC1F94B923507E5900EDB465 /* UIImageView+NTESLDGif.h */,
+				DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */,
+				DC1F94DB235415DC00EDB465 /* NTESLiveDetectView.h */,
+				DC1F94DC235415DC00EDB465 /* NTESLiveDetectView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC1F94BC2350851500EDB465 /* GifPic */ = {
+			isa = PBXGroup;
+			children = (
+				DC1F94C5235086BB00EDB465 /* open-eyes.gif */,
+				DC1F94C8235086BB00EDB465 /* open-mouth.gif */,
+				DC1F94C7235086BB00EDB465 /* turn-left.gif */,
+				DC1F94C6235086BB00EDB465 /* turn-right.gif */,
+			);
+			path = GifPic;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC1F946E234ED6F400EDB465 /* NTESLiveDetectPublicDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC1F9488234ED6F700EDB465 /* Build configuration list for PBXNativeTarget "NTESLiveDetectPublicDemo" */;
+			buildPhases = (
+				A1806712F627D0BAF961EFDF /* [CP] Check Pods Manifest.lock */,
+				DC1F946B234ED6F400EDB465 /* Sources */,
+				DC1F946C234ED6F400EDB465 /* Frameworks */,
+				DC1F946D234ED6F400EDB465 /* Resources */,
+				FCF4F7082E0DAF8F90EDAD89 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NTESLiveDetectPublicDemo;
+			productName = NTESLiveDetectPublicDemo;
+			productReference = DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC1F9467234ED6F400EDB465 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Ke Xu";
+				TargetAttributes = {
+					DC1F946E234ED6F400EDB465 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = DC1F946A234ED6F400EDB465 /* Build configuration list for PBXProject "NTESLiveDetectPublicDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC1F9466234ED6F400EDB465;
+			productRefGroup = DC1F9470234ED6F400EDB465 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC1F946E234ED6F400EDB465 /* NTESLiveDetectPublicDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC1F946D234ED6F400EDB465 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC1F94C9235086BB00EDB465 /* open-eyes.gif in Resources */,
+				DC1F94CB235086BB00EDB465 /* turn-left.gif in Resources */,
+				DC0A72592359AEBB0005B960 /* open-mouth.wav in Resources */,
+				DC1F94A8234F591400EDB465 /* NTESLiveDetectBundle.bundle in Resources */,
+				DC1F9482234ED6F700EDB465 /* LaunchScreen.storyboard in Resources */,
+				DC1F947F234ED6F700EDB465 /* Assets.xcassets in Resources */,
+				DC0A725B2359AEBB0005B960 /* turn-left.wav in Resources */,
+				DC1F94CA235086BB00EDB465 /* turn-right.gif in Resources */,
+				DC1F94CC235086BB00EDB465 /* open-mouth.gif in Resources */,
+				DC1F947D234ED6F400EDB465 /* Main.storyboard in Resources */,
+				DC0A72582359AEBB0005B960 /* open-eyes.wav in Resources */,
+				DC0A725A2359AEBB0005B960 /* turn-right.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1806712F627D0BAF961EFDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NTESLiveDetectPublicDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCF4F7082E0DAF8F90EDAD89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC1F946B234ED6F400EDB465 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC1F9474234ED6F400EDB465 /* AppDelegate.m in Sources */,
+				DC1F948E234ED78F00EDB465 /* NTESLDHomePageViewController.m in Sources */,
+				DC1F9496234EDDF000EDB465 /* NTESBaseViewController.m in Sources */,
+				DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */,
+				DC1F9485234ED6F700EDB465 /* main.m in Sources */,
+				DC1F94BB23507E5900EDB465 /* UIImageView+NTESLDGif.m in Sources */,
+				DC1F94B62350275400EDB465 /* NTESLDMainViewController.m in Sources */,
+				DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */,
+				DC1F94DD235415DC00EDB465 /* NTESLiveDetectView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC1F947B234ED6F400EDB465 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC1F947C234ED6F400EDB465 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DC1F9480234ED6F700EDB465 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC1F9481234ED6F700EDB465 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC1F9486234ED6F700EDB465 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DC1F9487234ED6F700EDB465 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC1F9489234ED6F700EDB465 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1E1CD5ADA730AB3275AE4E3 /* Pods-NTESLiveDetectPublicDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XB333SWTAF;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
+				PRODUCT_NAME = "活体检测Demo";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DC1F948A234ED6F700EDB465 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
+				PRODUCT_NAME = "活体检测Demo";
+				PROVISIONING_PROFILE_SPECIFIER = enterpriseForWildCard;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC1F946A234ED6F400EDB465 /* Build configuration list for PBXProject "NTESLiveDetectPublicDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC1F9486234ED6F700EDB465 /* Debug */,
+				DC1F9487234ED6F700EDB465 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC1F9488234ED6F700EDB465 /* Build configuration list for PBXNativeTarget "NTESLiveDetectPublicDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC1F9489234ED6F700EDB465 /* Debug */,
+				DC1F948A234ED6F700EDB465 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC1F9467234ED6F400EDB465 /* Project object */;
+}

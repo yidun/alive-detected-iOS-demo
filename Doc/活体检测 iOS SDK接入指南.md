@@ -19,7 +19,7 @@ Demo与Framework下载地址：https://github.com/yidun/alive-detected-iOS-demo
    
    (1)如果已存在上述的系统framework，则忽略
    
-   (2)SDK 最低兼容系统版本 iOS 8.0
+   (2)SDK 最低兼容系统版本 iOS 9.0
   
 ### 二、SDK 使用
 
@@ -81,7 +81,9 @@ Demo与Framework下载地址：https://github.com/yidun/alive-detected-iOS-demo
 		    		break;
 	    	}
 		
- __备注:__  在获取活体检测结果成功的回调里做下一步reCheck接口的验证，否则，做客户端的下一步处理。
+ __备注:__  
+ 1. 在获取活体检测结果成功的回调里做下一步reCheck接口的验证，否则，做客户端的下一步处理;
+ 2. 出于业务安全策略，在app切到后台时，建议停止活体检测，并在重新进入前台时，重新开始活体检测，可参考demo。
 
 
 ### 三、SDK 接口
@@ -127,8 +129,10 @@ Demo与Framework下载地址：https://github.com/yidun/alive-detected-iOS-demo
 
 		/**
 		 @说明        动作检测监听，可在App内做相应提示
-		             使用[notification.userInfo objectForKey:@"info"]获取当前动作状态，NSNumber类型
-		             动作状态表示：0——正面，1——右转，2——左转，3——张嘴，4——眨眼
+		             使用[notification.userInfo objectForKey:@"info"]获取当前动作状态，NSDictionary类型
+		             key:当前执行的动作状态 0——正面，1——右转，2——左转，3——张嘴，4——眨眼, -1——未检测到完整人脸
+		             value:对应动作的完成状态 NO——未完成 YES——已完成
+		 
 		 */
 		extern NSString * _Nonnull const NTESLDNotificationStatusChange;
 		

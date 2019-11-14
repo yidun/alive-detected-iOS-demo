@@ -1,0 +1,7 @@
+#platform
+platform :ios, '9.0'
+
+target 'NTESLiveDetectPublicDemo' do
+pod 'Masonry', '~> 1.0.2' 
+pod 'WHToast'
+end
