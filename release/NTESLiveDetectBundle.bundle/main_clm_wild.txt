@@ -1,3 +1,0 @@
-LandmarkDetector clm_wild.txt
-FaceDetConversion haarAlign.txt
-DetectionValidator validator_general_68.txt
