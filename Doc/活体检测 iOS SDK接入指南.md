@@ -12,8 +12,9 @@ Demo与Framework下载地址：https://github.com/yidun/alive-detected-iOS-demo
 	* `AssetsLibrary.framework`
 	* `CoreData.framework`
 * 4、在Xcode中找到`TARGETS-->Build Setting-->Linking-->Other Linker Flags`在这个选项中需要添加 `-ObjC`
-* 5、在Xcode中找到`TARGETS-->Build Setting-->Apple Clang - Language-->Compile Source As`在这个选项中选择 `Objective-C++`
-* 6、活体检测SDK需要配置相机权限，请在plist文件中添加相应权限。
+* 5、将引入SDK头文件的.m文件重命名为.mm文件 或者 在Xcode中找到`TARGETS-->Build Setting-->Apple Clang - Language-->Compile Source As`在这个选项中选择 `Objective-C++`
+* 6、活体检测SDK需要配置相机权限，请在plist文件中添加相应权限`Privacy - Camera Usage Description`
+* 7、工程项目需关闭bitcode，设置`ENABLE_BITCODE = NO`。
     
    __备注:__  
    

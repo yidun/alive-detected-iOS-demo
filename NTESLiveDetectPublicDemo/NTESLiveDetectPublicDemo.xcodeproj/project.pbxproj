@@ -12,8 +12,6 @@
 		DC0A72592359AEBB0005B960 /* open-mouth.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72552359AEBB0005B960 /* open-mouth.wav */; };
 		DC0A725A2359AEBB0005B960 /* turn-right.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72562359AEBB0005B960 /* turn-right.wav */; };
 		DC0A725B2359AEBB0005B960 /* turn-left.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72572359AEBB0005B960 /* turn-left.wav */; };
-		DC1223AF237D365100357EFD /* NTESLiveDetect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1223AD237D365100357EFD /* NTESLiveDetect.framework */; };
-		DC1223B0237D365100357EFD /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1223AE237D365100357EFD /* opencv2.framework */; };
 		DC1F9474234ED6F400EDB465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9473234ED6F400EDB465 /* AppDelegate.m */; };
 		DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9476234ED6F400EDB465 /* SceneDelegate.m */; };
 		DC1F947D234ED6F400EDB465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1F947B234ED6F400EDB465 /* Main.storyboard */; };
@@ -23,7 +21,6 @@
 		DC1F948E234ED78F00EDB465 /* NTESLDHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */; };
 		DC1F9496234EDDF000EDB465 /* NTESBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9494234EDDF000EDB465 /* NTESBaseViewController.m */; };
 		DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */; };
-		DC1F94A8234F591400EDB465 /* NTESLiveDetectBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */; };
 		DC1F94AD234F59B300EDB465 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94AC234F59B300EDB465 /* AVFoundation.framework */; };
 		DC1F94AF234F59B900EDB465 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94AE234F59B900EDB465 /* CoreMedia.framework */; };
 		DC1F94B1234F59CC00EDB465 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */; };
@@ -44,8 +41,6 @@
 		DC0A72552359AEBB0005B960 /* open-mouth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-mouth.wav"; sourceTree = "<group>"; };
 		DC0A72562359AEBB0005B960 /* turn-right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-right.wav"; sourceTree = "<group>"; };
 		DC0A72572359AEBB0005B960 /* turn-left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-left.wav"; sourceTree = "<group>"; };
-		DC1223AD237D365100357EFD /* NTESLiveDetect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESLiveDetect.framework; path = SDK/NTESLiveDetect.framework; sourceTree = "<group>"; };
-		DC1223AE237D365100357EFD /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = SDK/opencv2.framework; sourceTree = "<group>"; };
 		DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "活体检测Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1F9472234ED6F400EDB465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC1F9473234ED6F400EDB465 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,7 +58,6 @@
 		DC1F9495234EDDF000EDB465 /* NTESBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESBaseViewController.h; sourceTree = "<group>"; };
 		DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESLDSuccessViewController.m; sourceTree = "<group>"; };
 		DC1F9499234F2EE400EDB465 /* NTESLDSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESLDSuccessViewController.h; sourceTree = "<group>"; };
-		DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NTESLiveDetectBundle.bundle; path = SDK/NTESLiveDetectBundle.bundle; sourceTree = "<group>"; };
 		DC1F94AC234F59B300EDB465 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DC1F94AE234F59B900EDB465 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -88,10 +82,8 @@
 			files = (
 				DC1F94B3234F59D100EDB465 /* CoreData.framework in Frameworks */,
 				DC1F94B1234F59CC00EDB465 /* AssetsLibrary.framework in Frameworks */,
-				DC1223B0237D365100357EFD /* opencv2.framework in Frameworks */,
 				DC1F94AF234F59B900EDB465 /* CoreMedia.framework in Frameworks */,
 				DC1F94AD234F59B300EDB465 /* AVFoundation.framework in Frameworks */,
-				DC1223AF237D365100357EFD /* NTESLiveDetect.framework in Frameworks */,
 				01900213E43E07608CF3DDC8 /* libPods-NTESLiveDetectPublicDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,8 +103,6 @@
 		C069EB17370F5EBB0C5EE2BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DC1223AD237D365100357EFD /* NTESLiveDetect.framework */,
-				DC1223AE237D365100357EFD /* opencv2.framework */,
 				DC1F94B2234F59D100EDB465 /* CoreData.framework */,
 				DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */,
 				DC1F94AE234F59B900EDB465 /* CoreMedia.framework */,
@@ -136,7 +126,6 @@
 		DC1F9466234ED6F400EDB465 = {
 			isa = PBXGroup;
 			children = (
-				DC1F94A7234F591400EDB465 /* NTESLiveDetectBundle.bundle */,
 				DC1F9471234ED6F400EDB465 /* NTESLiveDetectPublicDemo */,
 				DC1F9470234ED6F400EDB465 /* Products */,
 				199C6346346A0B274C343D33 /* Pods */,
@@ -280,7 +269,6 @@
 				DC1F94C9235086BB00EDB465 /* open-eyes.gif in Resources */,
 				DC1F94CB235086BB00EDB465 /* turn-left.gif in Resources */,
 				DC0A72592359AEBB0005B960 /* open-mouth.wav in Resources */,
-				DC1F94A8234F591400EDB465 /* NTESLiveDetectBundle.bundle in Resources */,
 				DC1F9482234ED6F700EDB465 /* LaunchScreen.storyboard in Resources */,
 				DC1F947F234ED6F700EDB465 /* Assets.xcassets in Resources */,
 				DC0A725B2359AEBB0005B960 /* turn-left.wav in Resources */,
