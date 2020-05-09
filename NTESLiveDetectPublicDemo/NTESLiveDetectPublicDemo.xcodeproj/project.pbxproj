@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		01900213E43E07608CF3DDC8 /* libPods-NTESLiveDetectPublicDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */; };
+		CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BA246664CE0086B0A7 /* NTESToastView.m */; };
+		CAA070C1246664CE0086B0A7 /* NTESDottedLineProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */; };
+		CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */; };
+		CAA070D2246665C90086B0A7 /* NTESTimeoutToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */; };
 		DC0A72582359AEBB0005B960 /* open-eyes.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72542359AEBB0005B960 /* open-eyes.wav */; };
 		DC0A72592359AEBB0005B960 /* open-mouth.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72552359AEBB0005B960 /* open-mouth.wav */; };
 		DC0A725A2359AEBB0005B960 /* turn-right.wav in Resources */ = {isa = PBXBuildFile; fileRef = DC0A72562359AEBB0005B960 /* turn-right.wav */; };
@@ -37,6 +41,14 @@
 /* Begin PBXFileReference section */
 		1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NTESLiveDetectPublicDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTESLiveDetectPublicDemo.release.xcconfig"; path = "Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo.release.xcconfig"; sourceTree = "<group>"; };
+		CAA070BA246664CE0086B0A7 /* NTESToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESToastView.m; sourceTree = "<group>"; };
+		CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESDottedLineProgress.m; sourceTree = "<group>"; };
+		CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NTESLiveDetect.m"; sourceTree = "<group>"; };
+		CAA070BD246664CE0086B0A7 /* NTESDottedLineProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESDottedLineProgress.h; sourceTree = "<group>"; };
+		CAA070BE246664CE0086B0A7 /* NTESToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESToastView.h; sourceTree = "<group>"; };
+		CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NTESLiveDetect.h"; sourceTree = "<group>"; };
+		CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTimeoutToastView.m; sourceTree = "<group>"; };
+		CAA070D1246665C90086B0A7 /* NTESTimeoutToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTimeoutToastView.h; sourceTree = "<group>"; };
 		DC0A72542359AEBB0005B960 /* open-eyes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-eyes.wav"; sourceTree = "<group>"; };
 		DC0A72552359AEBB0005B960 /* open-mouth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-mouth.wav"; sourceTree = "<group>"; };
 		DC0A72562359AEBB0005B960 /* turn-right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-right.wav"; sourceTree = "<group>"; };
@@ -112,6 +124,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CAA070B9246664CE0086B0A7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */,
+				CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */,
+				CAA070BD246664CE0086B0A7 /* NTESDottedLineProgress.h */,
+				CAA070BE246664CE0086B0A7 /* NTESToastView.h */,
+				CAA070BA246664CE0086B0A7 /* NTESToastView.m */,
+				CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		DC0A72482359AC850005B960 /* WavMusic */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +169,7 @@
 		DC1F9471234ED6F400EDB465 /* NTESLiveDetectPublicDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CAA070B9246664CE0086B0A7 /* Util */,
 				DC0A72482359AC850005B960 /* WavMusic */,
 				DC1F94BC2350851500EDB465 /* GifPic */,
 				DC1F94B823507E4B00EDB465 /* View */,
@@ -188,6 +214,8 @@
 		DC1F94B823507E4B00EDB465 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CAA070D1246665C90086B0A7 /* NTESTimeoutToastView.h */,
+				CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */,
 				DC1F94B923507E5900EDB465 /* UIImageView+NTESLDGif.h */,
 				DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */,
 				DC1F94DB235415DC00EDB465 /* NTESLiveDetectView.h */,
@@ -336,8 +364,12 @@
 				DC1F9485234ED6F700EDB465 /* main.m in Sources */,
 				DC1F94BB23507E5900EDB465 /* UIImageView+NTESLDGif.m in Sources */,
 				DC1F94B62350275400EDB465 /* NTESLDMainViewController.m in Sources */,
+				CAA070D2246665C90086B0A7 /* NTESTimeoutToastView.m in Sources */,
 				DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */,
+				CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */,
 				DC1F94DD235415DC00EDB465 /* NTESLiveDetectView.m in Sources */,
+				CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */,
+				CAA070C1246664CE0086B0A7 /* NTESDottedLineProgress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,34 +11,30 @@
 #import <Masonry.h>
 #import "NTESLDSuccessViewController.h"
 #import "NTESLDMainViewController.h"
+#import "UIColor+NTESLiveDetect.h"
 
 @implementation NTESLDHomePageViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     self.view.backgroundColor = [UIColor whiteColor];
     [self customInitSubViews];
 }
 
-- (void)customInitSubViews
-{
+- (void)customInitSubViews {
     [self __initBackgroundView];
     [self __initBottomView];
 }
 
-- (void)startLiveDetect
-{
+- (void)startLiveDetect {
     NTESLDMainViewController *vc = [[NTESLDMainViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)__initBackgroundView
-{
+- (void)__initBackgroundView {
     UIImageView *personImageView = [[UIImageView alloc] init];
     personImageView.image = [UIImage imageNamed:@"pic_demo"];
     [self.view addSubview:personImageView];
@@ -65,12 +61,12 @@
     firstLineTitleLable.textColor = UIColorFromHex(0x464646);
     [self.view addSubview:firstLineTitleLable];
     [firstLineTitleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(logoImageView.mas_bottom).offset(12*KHeightScale);
+        make.top.equalTo(logoImageView.mas_bottom).offset(12);
         make.left.equalTo(self.view).offset(32*KWidthScale);
     }];
     
     UILabel *secondLineTitleLable = [[UILabel alloc] init];
-    secondLineTitleLable.text = @"活体检测Demo";
+    secondLineTitleLable.text = @"易盾活体检测Demo";
     secondLineTitleLable.font = [UIFont fontWithName:@"PingFangSC-Semibold" size:24*KWidthScale];
     secondLineTitleLable.textColor = UIColorFromHex(0x464646);
     [self.view addSubview:secondLineTitleLable];
@@ -162,10 +158,16 @@
     gradientLayer.startPoint = CGPointMake(0.0, 0.5);
     gradientLayer.endPoint = CGPointMake(1.0, 0.5);
     [startDetectButton.layer insertSublayer:gradientLayer atIndex:0];
+    
+    CAGradientLayer *gradientLayer1 = [CAGradientLayer layer];
+    gradientLayer1.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    gradientLayer1.colors = @[(id)[UIColor ntes_colorWithHexString:@"#FFFFFF"].CGColor, (id)[UIColor ntes_colorWithHexString:@"#EEEFF6"].CGColor];
+    gradientLayer1.startPoint = CGPointMake(0.0, 0.5);
+    gradientLayer1.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradientLayer1 atIndex:0];
 }
 
-- (void)__initBottomView
-{
+- (void)__initBottomView {
     UILabel *bottomCopyRightLabel = [[UILabel alloc] init];
     bottomCopyRightLabel.text = bottomCopyRightText;
     bottomCopyRightLabel.font = [UIFont systemFontOfSize:12.0*KHeightScale];
@@ -178,3 +180,5 @@
 }
 
 @end
+
+

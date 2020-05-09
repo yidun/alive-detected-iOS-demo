@@ -12,5 +12,8 @@
 
 - (void)shouldHideLogoView:(BOOL)hide;
 
+- (void)shouldHiddenTitle:(BOOL)hide title:(NSString *)title
+    showHiddenVoiceButton:(BOOL)voiceButton;
+
 @end
 

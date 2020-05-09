@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NTESLiveDetectView : UIView
 
+@property (nonatomic, strong) NSTimer *timer;
+
 @property (nonatomic, strong) UIImageView *cameraImage;
 
 @property (nonatomic, strong) UIActivityIndicatorView * activityIndicator;
@@ -33,3 +35,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

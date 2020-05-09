@@ -10,10 +10,17 @@
 #import "NTESBaseViewController.h"
 
 typedef NS_ENUM(NSUInteger, NTESLoginType) {
-    NTESQuickPassType = 1,
-    NTESQuickLoginType,
+    NTESQuickLoginTypeSeccess = 1,
+    NTESQuickLoginTypeFailure,
 };
 
 @interface NTESLDSuccessViewController : NTESBaseViewController
 
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *message;
+
+@property (nonatomic, assign) NTESLoginType loginType;
+
 @end
+
+

@@ -11,6 +11,8 @@
 #import "LDDemoDefines.h"
 #import "UIImageView+NTESLDGif.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NTESDottedLineProgress.h"
+#import "UIColor+NTESLiveDetect.h"
 
 @interface NTESLiveDetectView ()
 
@@ -50,12 +52,19 @@
 // 播放状态：是否要播放
 @property (nonatomic, assign) BOOL shouldPlay;
 
+// 进度的
+@property (nonatomic, strong) NTESDottedLineProgress *progressView;
+
+// 头部标题
+@property (nonatomic, strong) UILabel  *navTitleLabel;
+
+@property (nonatomic, assign) int seconds;
+
 @end
 
 @implementation NTESLiveDetectView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.actionsCount = 0;
@@ -63,21 +72,22 @@
         self.imageArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         self.musicArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         [self customInitSubViews];
+        
+        self.seconds = 0;
     }
     return self;
 }
 
-- (void)customInitSubViews
-{
+- (void)customInitSubViews {
     [self __initImageView];
     [self __initBackBarButton];
     [self __initVoiceButton];
     [self __initActivityIndicator];
+    [self __initTitle];
     [self transparentCutRoundArea];
 }
 
-- (void)showActionTips:(NSString *)actions
-{
+- (void)showActionTips:(NSString *)actions {
     self.actions = actions;
     DLog(@"-----actions:%@", self.actions);
     [self __initActionIndexView];
@@ -85,10 +95,22 @@
     [self __initActionImage];
     [self __initActionsText];
     [self showFrontImage];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(circular:) userInfo:nil repeats:YES];
+//    [self.timer fire];
 }
 
-- (void)changeTipStatus:(NSDictionary *)infoDict
-{
+- (void)circular:(NSTimer *)timer {
+    self.seconds++;
+    if (self.seconds >= 20) {
+        self.seconds = 0;
+        [timer invalidate];
+    } else {
+        _progressView.progress = (self.seconds + 1) * 0.05;
+    }
+}
+
+- (void)changeTipStatus:(NSDictionary *)infoDict {
     NSNumber *key = [[infoDict allKeys] firstObject];
     BOOL actionStatus = [[infoDict objectForKey:key] boolValue];
     if (actionStatus) {
@@ -128,8 +150,7 @@
     self.actionsText.text = statusText;
 }
 
-- (void)__initBackBarButton
-{
+- (void)__initBackBarButton {
     _backBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_backBarButton addTarget:self action:@selector(doBack) forControlEvents:UIControlEventTouchUpInside];
     [_backBarButton setImage:[UIImage imageNamed:@"ico_back"] forState:UIControlStateNormal];
@@ -137,14 +158,13 @@
     [self addSubview:_backBarButton];
     [_backBarButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(20*KWidthScale);
-        make.top.equalTo(self).offset(IS_IPHONE_X ? 33+statusBarHeight : 27+statusBarHeight);
+        make.top.equalTo(self).offset(IS_IPHONE_X ? statusBarHeight : statusBarHeight + 10);
         make.width.equalTo(@(24*KWidthScale));
         make.height.equalTo(@(24*KWidthScale));
     }];
 }
 
-- (void)__initVoiceButton
-{
+- (void)__initVoiceButton {
     self.voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     if (self.shouldPlay) {
         [self.voiceButton setImage:[UIImage imageNamed:@"ico_voice_open"] forState:UIControlStateNormal];
@@ -155,14 +175,29 @@
     [self addSubview:self.voiceButton];
     [self.voiceButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-(20*KWidthScale));
-        make.top.equalTo(self).offset(IS_IPHONE_X ? 33+statusBarHeight : 27+statusBarHeight);
+        make.centerY.equalTo(self.backBarButton);
         make.width.equalTo(@(24*KWidthScale));
         make.height.equalTo(@(24*KWidthScale));
     }];
 }
 
-- (void)__initActivityIndicator
-{
+- (void)__initTitle {
+    if (!_navTitleLabel) {
+        _navTitleLabel = [[UILabel alloc] init];
+        _navTitleLabel.text = @"易盾活体检测";
+        _navTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _navTitleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:KWidthScale * 16];
+        _navTitleLabel.textColor = [UIColor ntes_colorWithHexString:@"#222222"];
+        [self addSubview:_navTitleLabel];
+        [_navTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.backBarButton);
+            make.centerX.equalTo(self);
+            make.width.equalTo(@(200));
+        }];
+    }
+}
+
+- (void)__initActivityIndicator {
     _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [_activityIndicator setColor:[UIColor blueColor]];
     [self addSubview:_activityIndicator];
@@ -173,8 +208,7 @@
     }];
 }
 
-- (void)__initImageView
-{
+- (void)__initImageView {
     self.cameraImage = [[UIImageView alloc] init];
     [self addSubview:self.cameraImage];
     [self.cameraImage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -183,10 +217,20 @@
         make.width.equalTo(@(imageViewWidth));
         make.height.equalTo(@(imageViewHeight));
     }];
+    
+    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2, IS_IPHONE_X ? 50+statusBarHeight + imageViewHeight/8 : 4+statusBarHeight + imageViewHeight/8, imageViewWidth, imageViewHeight) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
+    //    _progressView.backgroundColor = [UIColor blackColor];
+    _progressView.roundStyle = YES;
+    //    _progressView.colorGradient = NO;
+    _progressView.showProgressText = NO;
+    _progressView.animationDuration = 1;
+    _progressView.increaseFromLast = YES;
+        _progressView.notAnimated = NO;
+    _progressView.subdivCount = 90;
+    [self addSubview:_progressView];
 }
 
-- (void)__initActionsText
-{
+- (void)__initActionsText {
     self.actionsText = [[UILabel alloc] init];
     self.actionsText.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20*KWidthScale];
     self.actionsText.textColor = UIColorFromHex(0x000000);
@@ -198,8 +242,7 @@
     }];
 }
 
-- (void)__initActionIndexView
-{
+- (void)__initActionIndexView {
     // 正面不算入动作序列
     int indexNumber = (int)self.actions.length - 1;
     self.actionIndexView = [[UIView alloc] init];
@@ -231,8 +274,7 @@
     self.indexViewArray = [indexViews copy];
 }
 
-- (void)showActionIndex:(NSUInteger)index
-{
+- (void)showActionIndex:(NSUInteger)index {
     for (int i=0; i<index; i++) {
         UILabel *indexLabel = (UILabel *)self.indexViewArray[i];
         indexLabel.text = @"";
@@ -247,8 +289,7 @@
     currentIndexLabel.frame = CGRectMake(30*KWidthScale*index-5*KWidthScale+self.leftPadding, 0, 20*KWidthScale, 20*KWidthScale);
 }
 
-- (void)__initFrontImage
-{
+- (void)__initFrontImage {
     self.frontImage = [[UIImageView alloc] init];
     self.frontImage.image = [UIImage imageNamed:@"pic_front"];
     [self addSubview:self.frontImage];
@@ -260,8 +301,7 @@
     }];
 }
 
-- (void)__initActionImage
-{
+- (void)__initActionImage {
     self.actionImage = [[UIImageView alloc] init];
     [self addSubview:self.actionImage];
     [self.actionImage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -272,8 +312,7 @@
     }];
 }
 
-- (void)showActionImage:(NSString *)imageName
-{
+- (void)showActionImage:(NSString *)imageName {
     // 0——正面，1——右转，2——左转，3——张嘴，4——眨眼
     self.frontImage.hidden = YES;
     self.actionImage.hidden = NO;
@@ -282,8 +321,7 @@
     [self.actionImage yh_setImage:gifImageUrl];
 }
 
-- (void)playActionMusic:(NSString *)musicName
-{
+- (void)playActionMusic:(NSString *)musicName {
     // 0——正面，1——右转，2——左转，3——张嘴，4——眨眼
     NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:musicName withExtension:@"wav"];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
@@ -297,8 +335,7 @@
     }
 }
 
-- (void)showFrontImage
-{
+- (void)showFrontImage {
     self.frontImage.hidden = NO;
     self.actionImage.hidden = YES;
 }
@@ -328,8 +365,7 @@
     [self.cameraImage.layer addSublayer:cropLayer];
 }
 
-- (void)openVoiceButton
-{
+- (void)openVoiceButton {
     self.shouldPlay = !self.shouldPlay;
     if (self.shouldPlay) {
         [self.voiceButton setImage:[UIImage imageNamed:@"ico_voice_open"] forState:UIControlStateNormal];
@@ -338,11 +374,11 @@
     }
 }
 
-- (void)doBack
-{
+- (void)doBack {
     if ([self.LDViewDelegate respondsToSelector:@selector(backBarButtonPressed)]) {
         [self.LDViewDelegate backBarButtonPressed];
     }
 }
 
 @end
+
