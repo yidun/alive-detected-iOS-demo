@@ -59,7 +59,7 @@
 }
 
 - (void)__initDetector {
-    self.detector = [[NTESLiveDetectManager alloc] initWithImageView:self.mainView.cameraImage];
+    self.detector = [[NTESLiveDetectManager alloc] initWithImageView:self.mainView.cameraImage withDetectSensit:NTESSensitNormal];
     [self startLiveDetect];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveDetectStatusChange:) name:@"NTESLDNotificationStatusChange" object:nil];
     // 监控app进入后台
@@ -69,6 +69,8 @@
 - (void)startLiveDetect {
     [self.mainView.activityIndicator startAnimating];
     [self.detector setTimeoutInterval:20];
+    
+    NSString *version = [self.detector getSDKVersion];
     
     __weak __typeof(self)weakSelf = self;
     [self.detector startLiveDetectWithBusinessID:BUSINESSID actionsHandler:^(NSDictionary * _Nonnull params) {

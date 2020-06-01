@@ -97,6 +97,7 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/NTESLiveDetect/Assets/NTESLiveDetectBundle.bundle"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error.png"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error@2x.png"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error@3x.png"
@@ -105,6 +106,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_success@3x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/NTESLiveDetect/Assets/NTESLiveDetectBundle.bundle"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error.png"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error@2x.png"
   install_resource "${PODS_ROOT}/WHToast/WHToast/wtoast_icon/whtoast_error@3x.png"
