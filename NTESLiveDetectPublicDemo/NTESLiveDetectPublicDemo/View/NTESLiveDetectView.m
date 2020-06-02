@@ -71,7 +71,7 @@
         self.shouldPlay = YES;
         self.imageArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         
-        /// 音频资源需要自行准备，音频的名字以此顺序放。
+        /// 易盾授权客户可以使用该音频。
         self.musicArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         [self customInitSubViews];
         
