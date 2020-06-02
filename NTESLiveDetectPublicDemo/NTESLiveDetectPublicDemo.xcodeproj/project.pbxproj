@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		01900213E43E07608CF3DDC8 /* libPods-NTESLiveDetectPublicDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */; };
+		CA5357332486705600068DC1 /* turn-right.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357322486705600068DC1 /* turn-right.wav */; };
+		CA5357352486707400068DC1 /* turn-left.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357342486707300068DC1 /* turn-left.wav */; };
+		CA5357372486708400068DC1 /* open-mouth.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357362486708400068DC1 /* open-mouth.wav */; };
+		CA5357392486709800068DC1 /* open-eyes.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357382486709800068DC1 /* open-eyes.wav */; };
 		CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BA246664CE0086B0A7 /* NTESToastView.m */; };
 		CAA070C1246664CE0086B0A7 /* NTESDottedLineProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */; };
 		CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */; };
@@ -33,6 +37,10 @@
 /* Begin PBXFileReference section */
 		1A42887A4B677CEEA45E8256 /* libPods-NTESLiveDetectPublicDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NTESLiveDetectPublicDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTESLiveDetectPublicDemo.release.xcconfig"; path = "Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo.release.xcconfig"; sourceTree = "<group>"; };
+		CA5357322486705600068DC1 /* turn-right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-right.wav"; sourceTree = "<group>"; };
+		CA5357342486707300068DC1 /* turn-left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-left.wav"; sourceTree = "<group>"; };
+		CA5357362486708400068DC1 /* open-mouth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-mouth.wav"; sourceTree = "<group>"; };
+		CA5357382486709800068DC1 /* open-eyes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-eyes.wav"; sourceTree = "<group>"; };
 		CAA070BA246664CE0086B0A7 /* NTESToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESToastView.m; sourceTree = "<group>"; };
 		CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESDottedLineProgress.m; sourceTree = "<group>"; };
 		CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NTESLiveDetect.m"; sourceTree = "<group>"; };
@@ -130,6 +138,10 @@
 		DC0A72482359AC850005B960 /* WavMusic */ = {
 			isa = PBXGroup;
 			children = (
+				CA5357382486709800068DC1 /* open-eyes.wav */,
+				CA5357362486708400068DC1 /* open-mouth.wav */,
+				CA5357342486707300068DC1 /* turn-left.wav */,
+				CA5357322486705600068DC1 /* turn-right.wav */,
 			);
 			path = WavMusic;
 			sourceTree = "<group>";
@@ -280,12 +292,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5357352486707400068DC1 /* turn-left.wav in Resources */,
 				DC1F94C9235086BB00EDB465 /* open-eyes.gif in Resources */,
+				CA5357372486708400068DC1 /* open-mouth.wav in Resources */,
 				DC1F94CB235086BB00EDB465 /* turn-left.gif in Resources */,
 				DC1F9482234ED6F700EDB465 /* LaunchScreen.storyboard in Resources */,
 				DC1F947F234ED6F700EDB465 /* Assets.xcassets in Resources */,
+				CA5357392486709800068DC1 /* open-eyes.wav in Resources */,
 				DC1F94CA235086BB00EDB465 /* turn-right.gif in Resources */,
 				DC1F94CC235086BB00EDB465 /* open-mouth.gif in Resources */,
+				CA5357332486705600068DC1 /* turn-right.wav in Resources */,
 				DC1F947D234ED6F400EDB465 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
