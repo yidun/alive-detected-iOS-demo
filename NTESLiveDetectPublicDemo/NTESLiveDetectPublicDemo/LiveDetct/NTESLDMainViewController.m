@@ -70,10 +70,8 @@
     [self.mainView.activityIndicator startAnimating];
     [self.detector setTimeoutInterval:20];
     
-    NSString *version = [self.detector getSDKVersion];
-    
     __weak __typeof(self)weakSelf = self;
-    [self.detector startLiveDetectWithBusinessID:BUSINESSID actionsHandler:^(NSDictionary * _Nonnull params) {
+    [self.detector startLiveDetectWithBusinessID:@"请填写自己的BusinessID" actionsHandler:^(NSDictionary * _Nonnull params) {
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf.mainView.activityIndicator stopAnimating];
              NSString *actions = [params objectForKey:@"actions"];
@@ -98,9 +96,6 @@
 
 - (void)stopLiveDetect {
     [self.detector stopLiveDetect];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self showToastWithQuickPassMsg:@"停止检测"];
-//    });
 }
 
 - (void)liveDetectStatusChange:(NSNotification *)infoNotification {
@@ -132,9 +127,6 @@
         case NTESLDOperationTimeout:
         {
             msg = @"动作检测超时\n请在规定时间内完成动作";
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [self.navigationController popViewControllerAnimated:YES];
-//            });
             NTESTimeoutToastView *toastView = [[NTESTimeoutToastView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
             toastView.delegate = self;
             [toastView show];

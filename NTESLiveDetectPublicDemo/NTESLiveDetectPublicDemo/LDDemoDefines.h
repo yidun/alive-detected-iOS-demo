@@ -11,12 +11,6 @@
 
 //#define TEST_ENV
 
-#ifdef TEST_ENV
-#define BUSINESSID @"34b479cb4b97406497f7b8d1de85a1ab"
-#else
-#define BUSINESSID @"6a1a399443a54d31b91896a4208bf6e0"
-#endif
-
 #ifndef __OPTIMIZE__
 #define DLog(...) NSLog(__VA_ARGS__)
 #else
@@ -39,7 +33,7 @@
 #define UIColorFromHexA(hexValue, a)     [UIColor colorWithRed:(((hexValue & 0xFF0000) >> 16))/255.0f green:(((hexValue & 0xFF00) >> 8))/255.0f blue:((hexValue & 0xFF))/255.0f alpha:a]
 #define UIColorFromHex(hexValue)        UIColorFromHexA(hexValue, 1.0f)
 
-#define bottomCopyRightText         @"© 1997-2019 网易公司"
+#define bottomCopyRightText         @"© 1997-2020 网易公司"
 #define imageViewWidth              (300 * KWidthScale)
 // 传入imageView的宽高比应为3:4
 #define imageViewHeight             (imageViewWidth * 4 / 3)
