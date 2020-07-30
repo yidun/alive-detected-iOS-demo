@@ -14,6 +14,8 @@
 #import "NTESDottedLineProgress.h"
 #import "UIColor+NTESLiveDetect.h"
 
+#define DegreesToRadian(x) (M_PI * (x) / 180.0)
+
 @interface NTESLiveDetectView ()
 
 @property (nonatomic, strong) UIButton *voiceButton;
@@ -60,6 +62,12 @@
 
 @property (nonatomic, assign) int seconds;
 
+@property (nonatomic, strong) UILabel *detectExceptionLabel;
+
+@property (nonatomic, copy) NSString *statusText;
+
+@property (nonatomic, strong) UILabel *fuzzyImage;
+
 @end
 
 @implementation NTESLiveDetectView
@@ -70,8 +78,6 @@
         self.actionsCount = 0;
         self.shouldPlay = YES;
         self.imageArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
-        
-        /// 易盾授权客户可以使用该音频。
         self.musicArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         [self customInitSubViews];
         
@@ -98,8 +104,10 @@
     [self __initActionsText];
     [self showFrontImage];
     
+    if (self.timer) {
+        [self.timer invalidate];
+    }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(circular:) userInfo:nil repeats:YES];
-//    [self.timer fire];
 }
 
 - (void)circular:(NSTimer *)timer {
@@ -113,6 +121,10 @@
 }
 
 - (void)changeTipStatus:(NSDictionary *)infoDict {
+    NSLog(@"%@=======",infoDict);
+    NSString *value = [infoDict objectForKey:@"exception"];
+    [self showCameraExceptionLabel:value];
+    infoDict = [infoDict objectForKey:@"action"];
     NSNumber *key = [[infoDict allKeys] firstObject];
     BOOL actionStatus = [[infoDict objectForKey:key] boolValue];
     if (actionStatus) {
@@ -126,30 +138,70 @@
             [self playActionMusic:[self.musicArray objectAtIndex:[action integerValue]]];
         }
     }
-    NSString *statusText = @"";
+    
     switch ([key intValue]) {
         case 0:
-            statusText = @"请正对手机屏幕\n将面部移入框内";
+            self.statusText = @"请正对手机屏幕";
             break;
         case 1:
-            statusText = @"慢慢右转头";
+            self.statusText = @"慢慢右转头";
             break;
         case 2:
-            statusText = @"慢慢左转头";
+            self.statusText = @"慢慢左转头";
             break;
         case 3:
-            statusText = @"张张嘴";
+            self.statusText = @"张张嘴";
             break;
         case 4:
-            statusText = @"眨眨眼";
+            self.statusText = @"眨眨眼";
             break;
         case -1:
-            statusText = @"请正对手机屏幕\n将面部移入框内";
             break;
         default:
             break;
     }
-    self.actionsText.text = statusText;
+    self.actionsText.text = self.statusText;
+}
+
+- (void)showCameraExceptionLabel:(NSString *)value {
+    if (value) {
+        if (!self.detectExceptionLabel) {
+           self.detectExceptionLabel = [[UILabel alloc] init];
+           self.detectExceptionLabel.font = [UIFont systemFontOfSize:14];
+           self.detectExceptionLabel.textColor = [UIColor whiteColor];
+           [self addSubview:self.detectExceptionLabel];
+           [self.detectExceptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+               make.top.equalTo(self.progressView).mas_offset(50);
+               make.centerX.equalTo(self.progressView);
+               make.height.mas_equalTo(10);
+           }];
+       }
+
+       NSString *statusText = @"";
+       switch ([value intValue]) {
+           case 1:
+               statusText = @"保持面部在框内";
+               break;
+           case 2:
+               statusText = @"环境光线过暗";
+               break;
+           case 3:
+               statusText = @"环境光线过亮";
+               break;
+           case 4:
+               statusText = @"请勿抖动手机";
+               break;
+           default:
+               statusText = @"";
+               break;
+       }
+       self.detectExceptionLabel.text = statusText;
+       self.fuzzyImage.hidden = NO;
+       return;
+    } else {
+        self.detectExceptionLabel.text = @"";
+        self.fuzzyImage.hidden = YES;
+    }
 }
 
 - (void)__initBackBarButton {
@@ -230,6 +282,23 @@
         _progressView.notAnimated = NO;
     _progressView.subdivCount = 90;
     [self addSubview:_progressView];
+    
+    self.fuzzyImage = [[UILabel alloc] init];
+    self.fuzzyImage.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.fuzzyImage];
+    [self.fuzzyImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
+        make.width.equalTo(@(imageViewWidth));
+        make.height.equalTo(@(imageViewHeight));
+    }];
+    
+  UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:DegreesToRadian(-35) endAngle:DegreesToRadian(215) clockwise:NO];
+   CAShapeLayer *cropLayer = [CAShapeLayer layer];
+   cropLayer.path = cropPath.CGPath;
+    cropLayer.fillColor = [[UIColor ntes_colorWithHexString:@"#E2E2E2"] colorWithAlphaComponent:0.9].CGColor;
+   cropLayer.zPosition = 2.0f;
+  [self.fuzzyImage.layer addSublayer:cropLayer];
 }
 
 - (void)__initActionsText {
@@ -379,6 +448,12 @@
 - (void)doBack {
     if ([self.LDViewDelegate respondsToSelector:@selector(backBarButtonPressed)]) {
         [self.LDViewDelegate backBarButtonPressed];
+    }
+}
+
+- (void)dealloc {
+    if (self.timer) {
+        [self.timer invalidate];
     }
 }
 

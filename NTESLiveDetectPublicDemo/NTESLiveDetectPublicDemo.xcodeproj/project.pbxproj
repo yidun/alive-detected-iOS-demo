@@ -12,6 +12,7 @@
 		CA5357352486707400068DC1 /* turn-left.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357342486707300068DC1 /* turn-left.wav */; };
 		CA5357372486708400068DC1 /* open-mouth.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357362486708400068DC1 /* open-mouth.wav */; };
 		CA5357392486709800068DC1 /* open-eyes.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5357382486709800068DC1 /* open-eyes.wav */; };
+		CA8F6B6F24D29CE3009489E6 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */; };
 		CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BA246664CE0086B0A7 /* NTESToastView.m */; };
 		CAA070C1246664CE0086B0A7 /* NTESDottedLineProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */; };
 		CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */; };
@@ -25,7 +26,7 @@
 		DC1F948E234ED78F00EDB465 /* NTESLDHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */; };
 		DC1F9496234EDDF000EDB465 /* NTESBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9494234EDDF000EDB465 /* NTESBaseViewController.m */; };
 		DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */; };
-		DC1F94B62350275400EDB465 /* NTESLDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */; };
+		DC1F94B62350275400EDB465 /* NTESLDMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94B52350275400EDB465 /* NTESLDMainViewController.mm */; };
 		DC1F94BB23507E5900EDB465 /* UIImageView+NTESLDGif.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */; };
 		DC1F94C9235086BB00EDB465 /* open-eyes.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C5235086BB00EDB465 /* open-eyes.gif */; };
 		DC1F94CA235086BB00EDB465 /* turn-right.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC1F94C6235086BB00EDB465 /* turn-right.gif */; };
@@ -41,6 +42,8 @@
 		CA5357342486707300068DC1 /* turn-left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "turn-left.wav"; sourceTree = "<group>"; };
 		CA5357362486708400068DC1 /* open-mouth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-mouth.wav"; sourceTree = "<group>"; };
 		CA5357382486709800068DC1 /* open-eyes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "open-eyes.wav"; sourceTree = "<group>"; };
+		CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkReachability.m; sourceTree = "<group>"; };
+		CA8F6B6E24D29CE3009489E6 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReachability.h; sourceTree = "<group>"; };
 		CAA070BA246664CE0086B0A7 /* NTESToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESToastView.m; sourceTree = "<group>"; };
 		CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESDottedLineProgress.m; sourceTree = "<group>"; };
 		CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NTESLiveDetect.m"; sourceTree = "<group>"; };
@@ -74,7 +77,7 @@
 		DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		DC1F94B2234F59D100EDB465 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DC1F94B42350275400EDB465 /* NTESLDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NTESLDMainViewController.h; sourceTree = "<group>"; };
-		DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTESLDMainViewController.m; sourceTree = "<group>"; };
+		DC1F94B52350275400EDB465 /* NTESLDMainViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NTESLDMainViewController.mm; sourceTree = "<group>"; };
 		DC1F94B923507E5900EDB465 /* UIImageView+NTESLDGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NTESLDGif.h"; sourceTree = "<group>"; };
 		DC1F94BA23507E5900EDB465 /* UIImageView+NTESLDGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NTESLDGif.m"; sourceTree = "<group>"; };
 		DC1F94C5235086BB00EDB465 /* open-eyes.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "open-eyes.gif"; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 		CAA070B9246664CE0086B0A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CA8F6B6E24D29CE3009489E6 /* NetworkReachability.h */,
+				CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */,
 				CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */,
 				CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */,
 				CAA070BD246664CE0086B0A7 /* NTESDottedLineProgress.h */,
@@ -202,7 +207,7 @@
 				DC1F948C234ED78E00EDB465 /* NTESLDHomePageViewController.h */,
 				DC1F948D234ED78F00EDB465 /* NTESLDHomePageViewController.m */,
 				DC1F94B42350275400EDB465 /* NTESLDMainViewController.h */,
-				DC1F94B52350275400EDB465 /* NTESLDMainViewController.m */,
+				DC1F94B52350275400EDB465 /* NTESLDMainViewController.mm */,
 				DC1F9499234F2EE400EDB465 /* NTESLDSuccessViewController.h */,
 				DC1F9498234F2EE400EDB465 /* NTESLDSuccessViewController.m */,
 			);
@@ -361,9 +366,10 @@
 				DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */,
 				DC1F9485234ED6F700EDB465 /* main.m in Sources */,
 				DC1F94BB23507E5900EDB465 /* UIImageView+NTESLDGif.m in Sources */,
-				DC1F94B62350275400EDB465 /* NTESLDMainViewController.m in Sources */,
+				DC1F94B62350275400EDB465 /* NTESLDMainViewController.mm in Sources */,
 				CAA070D2246665C90086B0A7 /* NTESTimeoutToastView.m in Sources */,
 				DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */,
+				CA8F6B6F24D29CE3009489E6 /* NetworkReachability.m in Sources */,
 				CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */,
 				DC1F94DD235415DC00EDB465 /* NTESLiveDetectView.m in Sources */,
 				CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */,
@@ -516,7 +522,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -539,11 +545,11 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 569GNZ5392;
+				DEVELOPMENT_TEAM = XB333SWTAF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

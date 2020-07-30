@@ -13,6 +13,11 @@
 #import "NTESLDSuccessViewController.h"
 #import <WHToast.h>
 #import "NTESTimeoutToastView.h"
+#import "NetworkReachability.h"
+#import "SceneDelegate.h"
+#import "AppDelegate.h"
+
+static NSOperationQueue *_queue;
 
 @interface NTESLDMainViewController () <NTESLiveDetectViewDelegate, NTESTimeoutToastViewDelegate>
 
@@ -22,29 +27,60 @@
 
 @property (nonatomic, strong) NSDictionary *params;
 
+@property (nonatomic, strong) NSDictionary *dictionary;
+
+/**
+ 屏幕亮度值
+ */
+@property (nonatomic, assign) CGFloat value;
+
 @end
 
 @implementation NTESLDMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+
+    WeakSelf(self);
+    [NetworkReachability AFNReachability:^(AFNetworkReachabilityStatus status) {
+        [weakSelf replyLoading];
+    }];
+    
+    if (@available(iOS 13.0, *)) {
+        NSArray *array =[[[UIApplication sharedApplication] connectedScenes] allObjects];
+        UIWindowScene *windowScene = (UIWindowScene *)array[0];
+        SceneDelegate *delegate =(SceneDelegate *)windowScene.delegate;
+
+        delegate.enterBackground = ^{
+            [weakSelf backBarButtonPressed];
+        };
+    } else {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate setEnterBackgroundHandler:^{
+            [weakSelf backBarButtonPressed];
+        }];
+    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    [self __initDetectorView];
-    [self __initDetector];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[UIScreen mainScreen] setBrightness:self.value];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+
     [self.detector stopLiveDetect];
-    if (self.mainView.timer) {
-        [self.mainView.timer invalidate];
-    }
+     if (self.mainView.timer) {
+         [self.mainView.timer invalidate];
+     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -61,9 +97,44 @@
 - (void)__initDetector {
     self.detector = [[NTESLiveDetectManager alloc] initWithImageView:self.mainView.cameraImage withDetectSensit:NTESSensitNormal];
     [self startLiveDetect];
+//
+    CGFloat brightness = [UIScreen mainScreen].brightness;
+    self.value = brightness;
+//    [self compareCurrentBrightness:brightness];
+    [UIScreen mainScreen].brightness = 0.8;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveDetectStatusChange:) name:@"NTESLDNotificationStatusChange" object:nil];
     // 监控app进入后台
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveDefaultBrightness:) name:UIScreenBrightnessDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+//
+-(void)willResignActive {
+    [UIScreen mainScreen].brightness = self.value;
+}
+
+- (void)didBecomeActive {
+    [UIScreen mainScreen].brightness = 0.8;
+}
+
+- (void)saveDefaultBrightness:(NSNotification *)notification {
+    CGFloat brightness = [UIScreen mainScreen].brightness;
+    [self compareCurrentBrightness:brightness];
+
+}
+
+- (void)compareCurrentBrightness:(CGFloat)brightness {
+    NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f",brightness]];
+     NSDecimalNumberHandler *numHandler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundBankers scale:1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+     NSString *str1 = [[num1 decimalNumberByRoundingAccordingToBehavior:numHandler] stringValue];
+     if (![str1 isEqualToString:@"0.8"]) {
+       self.value = [UIScreen mainScreen].brightness;
+     } else {
+         
+     }
 }
 
 - (void)startLiveDetect {
@@ -71,7 +142,7 @@
     [self.detector setTimeoutInterval:20];
     
     __weak __typeof(self)weakSelf = self;
-    [self.detector startLiveDetectWithBusinessID:@"请填写自己的BusinessID" actionsHandler:^(NSDictionary * _Nonnull params) {
+    [self.detector startLiveDetectWithBusinessID:@"请填写自己项目的businessID" actionsHandler:^(NSDictionary * _Nonnull params) {
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf.mainView.activityIndicator stopAnimating];
              NSString *actions = [params objectForKey:@"actions"];
@@ -99,8 +170,8 @@
 }
 
 - (void)liveDetectStatusChange:(NSNotification *)infoNotification {
-    NSDictionary *infoDict = [infoNotification.userInfo objectForKey:@"info"];
-    [self.mainView changeTipStatus:infoDict];
+//    NSDictionary *infoDict = [infoNotification.userInfo objectForKey:@"info"];
+    [self.mainView changeTipStatus:infoNotification.userInfo];
 }
 
 - (void)showToastWithLiveDetectStatus:(NTESLDStatus)status {
@@ -179,24 +250,33 @@
 }
 
 - (void)dealloc {
-    
     NSLog(@"-----dealloc");
 }
 
 #pragma mark - view delegate
 - (void)backBarButtonPressed {
-    [self.navigationController popViewControllerAnimated:YES];
+    WeakSelf(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [[UIScreen mainScreen] setBrightness:weakSelf.value];
+        if ([weakSelf.navigationController.topViewController isKindOfClass:[self class]]) {
+           [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    });
 }
 
 #pragma mark - NTESTimeoutToastViewDelegate
 - (void)retryButtonDidTipped:(UIButton *)sender {
+    [self replyLoading];
+}
+
+- (void)replyLoading {
     [self stopLiveDetect];
     if (self.mainView) {
         [self.mainView removeFromSuperview];
     }
     self.mainView = nil;
     self.detector = nil;
-    [self.detector stopLiveDetect];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self __initDetectorView];
     [self __initDetector];

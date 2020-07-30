@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^AppEnterBackground)(void);
+
 @interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+
+@property (copy, nonatomic) AppEnterBackground enterBackground;
 
 @property (strong, nonatomic) UIWindow * window;
 
