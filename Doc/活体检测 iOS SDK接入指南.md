@@ -16,7 +16,7 @@ Podfile 里面添加以下代码：
 pod 'NTESLiveDetect'
 
 # 集成指定SDK，具体版本号可先执行 pod search NTESLiveDetect，根据返回的版本信息自行决定:
-pod 'NTESLiveDetect', '~> 2.2.0'
+pod 'NTESLiveDetect', '~> 2.2.1'
 ```
 
 * 保存并执行pod install即可，若未执行pod repo update，请执行pod install --repo-update
