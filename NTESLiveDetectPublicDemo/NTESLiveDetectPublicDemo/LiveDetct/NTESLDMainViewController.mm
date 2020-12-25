@@ -143,7 +143,7 @@ static NSOperationQueue *_queue;
     [self.detector setTimeoutInterval:20];
     
     __weak __typeof(self)weakSelf = self;
-    [self.detector startLiveDetectWithBusinessID:@"6a1a399443a54d31b91896a4208bf6e0" actionsHandler:^(NSDictionary * _Nonnull params) {
+    [self.detector startLiveDetectWithBusinessID:@"请填写易盾业务ID" actionsHandler:^(NSDictionary * _Nonnull params) {
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf.mainView.activityIndicator stopAnimating];
              NSString *actions = [params objectForKey:@"actions"];
