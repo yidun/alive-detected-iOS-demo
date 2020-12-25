@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'NTESLiveDetectPublicDemo' do
 pod 'Masonry', '~> 1.0.2' 
 pod 'WHToast'
-pod 'NTESLiveDetect', '2.2.2'
+pod 'NTESLiveDetect', '2.2.3'
 pod 'AFNetworking'
 
 end

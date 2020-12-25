@@ -529,6 +529,33 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AFNetworking\"",
+					"-l\"Masonry\"",
+					"-l\"WHToast\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MNN\"",
+					"-framework",
+					"\"NTESBaseComponent\"",
+					"-framework",
+					"\"NTESLiveDetect\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"opencv2\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -555,6 +582,33 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AFNetworking\"",
+					"-l\"Masonry\"",
+					"-l\"WHToast\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MNN\"",
+					"-framework",
+					"\"NTESBaseComponent\"",
+					"-framework",
+					"\"NTESLiveDetect\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"opencv2\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
