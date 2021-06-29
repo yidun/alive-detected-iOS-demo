@@ -519,7 +519,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AFKBK6V32D;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = automatic;
@@ -529,33 +529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-l\"AFNetworking\"",
-					"-l\"Masonry\"",
-					"-l\"WHToast\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AssetsLibrary\"",
-					"-framework",
-					"\"CoreData\"",
-					"-framework",
-					"\"CoreMedia\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MNN\"",
-					"-framework",
-					"\"NTESBaseComponent\"",
-					"-framework",
-					"\"NTESLiveDetect\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"opencv2\"",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -573,7 +547,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = XB333SWTAF;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = automatic;
@@ -583,33 +557,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-l\"AFNetworking\"",
-					"-l\"Masonry\"",
-					"-l\"WHToast\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"AssetsLibrary\"",
-					"-framework",
-					"\"CoreData\"",
-					"-framework",
-					"\"CoreMedia\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"MNN\"",
-					"-framework",
-					"\"NTESBaseComponent\"",
-					"-framework",
-					"\"NTESLiveDetect\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"opencv2\"",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
 				PROVISIONING_PROFILE_SPECIFIER = enterpriseForWildCard;
