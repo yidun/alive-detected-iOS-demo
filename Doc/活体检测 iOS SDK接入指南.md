@@ -16,7 +16,7 @@ Podfile 里面添加以下代码：
 pod 'NTESLiveDetect'
 
 # 集成指定SDK，具体版本号可先执行 pod search NTESLiveDetect，根据返回的版本信息自行决定:
-pod 'NTESLiveDetect', '~> 2.2.1'
+pod 'NTESLiveDetect', '~> 3.0.1'
 ```
 
 * 保存并执行pod install即可，若未执行pod repo update，请执行pod install --repo-update
@@ -27,8 +27,6 @@ pod 'NTESLiveDetect', '~> 2.2.1'
 * 1、导入 `NTESLiveDetect.framework` 到XCode工程，直接拖拽`NTESLiveDetect.framework`文件到Xcode工程内(请勾选Copy items if needed选项)
 * 2、导入 `NTESLiveDetectBundle.bundle`到XCode工程，进入Build phase，在copy bundle resources选项中添加`NTESLiveDetectBundle.bundle`文件（请勾选copy items if needed选项）
 * 3、添加依赖库，在项目设置target -> 选项卡General ->Linked Frameworks and Libraries添加如下依赖库： 
-	* `opencv2.framework`
-	* `MNN.framework`
 	* `AVFoundation.framework`
 	* `CoreMedia.framework`
 	* `AssetsLibrary.framework`
@@ -36,7 +34,6 @@ pod 'NTESLiveDetect', '~> 2.2.1'
 * 4、在Xcode中找到`TARGETS-->Build Setting-->Linking-->Other Linker Flags`在这个选项中需要添加 `-ObjC`
 * 5、将引入SDK头文件的.m文件重命名为.mm文件 或者 在Xcode中找到`TARGETS-->Build Setting-->Apple Clang - Language-->Compile Source As`在这个选项中选择 `Objective-C++`
 * 6、活体检测SDK需要配置相机权限，请在plist文件中添加相应权限`Privacy - Camera Usage Description`
-* 7、工程项目需关闭bitcode，设置`ENABLE_BITCODE = NO`。
     
    __备注:__  
    
@@ -192,32 +189,35 @@ __备注:__
 * 1、枚举
 		
 		/**
-		 *  @abstract    枚举
-		 *
-		 *  @说明         NTESLDCompletionHandler    对象的参数，用于表示获取token的状态
-		 *
-		 *               NTESLDCheckPass            活体检测通过
-		 *               NTESLDCheckNotPass         活体检测不通过
-		 *               NTESLDOperationTimeout     操作超时，用户未在规定时间内完成动作
-		 *               NTESLDGetConfTimeout       活体检测获取配置信息超时
-		 *               NTESLDOnlineCheckTimeout   云端检测结果请求超时
-		 *               NTESLDOnlineUploadFailure  云端检测上传图片失败
-		 *               NTESLDNonGateway           网络未连接
-		 *               NTESLDSDKError             SDK内部发生错误
-		 *               NTESLDCameraNotAvailable   App未获取相机权限
-		 *
-		 */
-		typedef NS_ENUM(NSUInteger, NTESLDStatus) {
-		    NTESLDCheckPass = 1,
-		    NTESLDCheckNotPass,
-		    NTESLDOperationTimeout,
-		    NTESLDGetConfTimeout,
-		    NTESLDOnlineCheckTimeout,
-		    NTESLDOnlineUploadFailure,
-		    NTESLDNonGateway,
-		    NTESLDSDKError,
-		    NTESLDCameraNotAvailable,
-		};
+         *  @abstract    枚举
+         *
+         *  @说明         NTESLDCompletionHandler    对象的参数，用于表示获取token的状态
+         *
+         *               NTESLDCheckPass            活体检测通过
+         *               NTESLDCheckNotPass         活体检测不通过
+         *               NTESLDOperationTimeout     操作超时，用户未在规定时间内完成动作
+         *               NTESLDGetConfTimeout       活体检测获取配置信息超时
+         *               NTESLDOnlineCheckTimeout   云端检测结果请求超时
+         *               NTESLDOnlineUploadFailure  云端检测上传图片失败
+         *               NTESLDNonGateway           网络未连接
+         *               NTESLDSDKError             SDK内部发生错误
+         *               NTESLDCameraNotAvailable   App未获取相机权限
+         *               NTESLDCheckingOnline  正在进行云端检测
+         *
+         *
+         */
+        typedef NS_ENUM(NSUInteger, NTESLDStatus) {
+            NTESLDCheckPass = 1,
+            NTESLDCheckNotPass,
+            NTESLDOperationTimeout,
+            NTESLDGetConfTimeout,
+            NTESLDOnlineCheckTimeout,
+            NTESLDOnlineUploadFailure,
+            NTESLDNonGateway,
+            NTESLDSDKError,
+            NTESLDCameraNotAvailable,
+            NTESLDCheckingOnline,
+        };
 
 * 2、回调block
 	
