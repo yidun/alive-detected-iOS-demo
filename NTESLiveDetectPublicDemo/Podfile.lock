@@ -16,14 +16,14 @@ PODS:
     - AFNetworking/NSURLSession
   - Masonry (1.0.2)
   - NTESBaseComponent (1.3)
-  - NTESLiveDetect (3.0.0):
+  - NTESLiveDetect (3.0.1):
     - NTESBaseComponent
   - WHToast (0.0.7)
 
 DEPENDENCIES:
   - AFNetworking
   - Masonry (~> 1.0.2)
-  - NTESLiveDetect (= 3.0.0)
+  - NTESLiveDetect (= 3.0.1)
   - WHToast
 
 SPEC REPOS:
@@ -38,9 +38,9 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   NTESBaseComponent: 697406993d6f787eb3946f23fa289f67a0a3866d
-  NTESLiveDetect: 421511a9591afd59934689eab77264016f625339
+  NTESLiveDetect: d6632b04ef1a9c62c2544d889daad45f972a61e7
   WHToast: 11a17a3f09f5f733e32bd6f3338919a448cbb719
 
-PODFILE CHECKSUM: 043a06ad7a3e65fe7060d69fee0cb5107f60f70b
+PODFILE CHECKSUM: e300f61bb610a4523b0c7092bb890722f6a7d9a2
 
 COCOAPODS: 1.10.1
