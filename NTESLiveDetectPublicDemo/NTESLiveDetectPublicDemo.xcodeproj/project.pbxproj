@@ -130,9 +130,9 @@
 			children = (
 				CA8F6B6E24D29CE3009489E6 /* NetworkReachability.h */,
 				CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */,
-				CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */,
 				CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */,
 				CAA070BD246664CE0086B0A7 /* NTESDottedLineProgress.h */,
+				CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */,
 				CAA070BE246664CE0086B0A7 /* NTESToastView.h */,
 				CAA070BA246664CE0086B0A7 /* NTESToastView.m */,
 				CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */,
@@ -516,35 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AFKBK6V32D;
-				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_INPUT_FILETYPE = automatic;
-				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
-				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		DC1F948A234ED6F700EDB465 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = XB333SWTAF;
 				ENABLE_BITCODE = YES;
@@ -560,7 +532,35 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = enterpriseForWildCard;
+				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DC1F948A234ED6F700EDB465 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99D70CB02ED937B28E8AA46D /* Pods-NTESLiveDetectPublicDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = XB333SWTAF;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INPUT_FILETYPE = automatic;
+				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
+				PRODUCT_NAME = "活体检测Demo";
+				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

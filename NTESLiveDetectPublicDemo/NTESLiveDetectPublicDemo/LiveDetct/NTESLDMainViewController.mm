@@ -16,6 +16,7 @@
 #import "NetworkReachability.h"
 #import "SceneDelegate.h"
 #import "AppDelegate.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 static NSOperationQueue *_queue;
 
@@ -29,6 +30,7 @@ static NSOperationQueue *_queue;
 
 @property (nonatomic, strong) NSDictionary *dictionary;
 
+@property (nonatomic, strong) MBProgressHUD *hud;
 /**
  屏幕亮度值
  */
@@ -96,7 +98,6 @@ static NSOperationQueue *_queue;
 
 - (void)__initDetector {
     self.detector = [[NTESLiveDetectManager alloc] initWithImageView:self.mainView.cameraImage withDetectSensit:NTESSensitNormal];
-    NSString *getSDKVersion = [self.detector getSDKVersion];
     [self startLiveDetect];
 //
     CGFloat brightness = [UIScreen mainScreen].brightness;
@@ -141,19 +142,25 @@ static NSOperationQueue *_queue;
 - (void)startLiveDetect {
     [self.mainView.activityIndicator startAnimating];
     [self.detector setTimeoutInterval:20];
-    
+    NSString *version = [self.detector getSDKVersion];
+    NSLog(@"=======%@",version);
     __weak __typeof(self)weakSelf = self;
     [self.detector startLiveDetectWithBusinessID:@"请输入易盾业务ID" actionsHandler:^(NSDictionary * _Nonnull params) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [weakSelf.mainView.activityIndicator stopAnimating];
-             NSString *actions = [params objectForKey:@"actions"];
-             if (actions && actions.length != 0) {
-                 [self.mainView showActionTips:actions];
-                 NSLog(@"动作序列：%@", actions);
-             } else {
-                 [weakSelf showToastWithQuickPassMsg:@"返回动作序列为空"];
-             }
-         });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.mainView.activityIndicator stopAnimating];
+            NSString *actions = [params objectForKey:@"actions"];
+            if (actions && actions.length != 0) {
+                [self.mainView showActionTips:actions];
+                NSLog(@"动作序列：%@", actions);
+            } else {
+                [weakSelf showToastWithQuickPassMsg:@"返回动作序列为空"];
+            }
+        });
+    } checkingHandler:^{
+        weakSelf.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        weakSelf.hud.mode = MBProgressHUDModeAnnularDeterminate;
+        weakSelf.hud.label.text = @"图片正在进行云端检测。。。";
+        [weakSelf.hud showAnimated:YES];
     } completionHandler:^(NTESLDStatus status, NSDictionary * _Nullable params) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.params = params;
@@ -176,6 +183,7 @@ static NSOperationQueue *_queue;
 }
 
 - (void)showToastWithLiveDetectStatus:(NTESLDStatus)status {
+    [self.hud hideAnimated:YES];
     NSString *msg = @"";
     NTESLDSuccessViewController *vc = [[NTESLDSuccessViewController alloc] init];
     NSString *token;
@@ -227,9 +235,6 @@ static NSOperationQueue *_queue;
             break;
         case NTESLDCameraNotAvailable:
             msg = @"App未获取相机权限";
-            break;
-        case NTESLDCheckingOnline:
-            msg = @" 正在进行云端检测";
             break;
         default:
             vc.message = @"未知错误";

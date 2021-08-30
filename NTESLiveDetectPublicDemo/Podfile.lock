@@ -15,21 +15,24 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Masonry (1.0.2)
+  - MBProgressHUD (1.2.0)
   - NTESBaseComponent (1.3)
-  - NTESLiveDetect (3.0.1):
+  - NTESLiveDetect (3.0.2):
     - NTESBaseComponent
   - WHToast (0.0.7)
 
 DEPENDENCIES:
   - AFNetworking
   - Masonry (~> 1.0.2)
-  - NTESLiveDetect (= 3.0.1)
+  - MBProgressHUD
+  - NTESLiveDetect (= 3.0.2)
   - WHToast
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Masonry
+    - MBProgressHUD
     - NTESBaseComponent
     - NTESLiveDetect
     - WHToast
@@ -37,10 +40,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   NTESBaseComponent: 697406993d6f787eb3946f23fa289f67a0a3866d
-  NTESLiveDetect: d6632b04ef1a9c62c2544d889daad45f972a61e7
+  NTESLiveDetect: 00c1ce10f4b6ad872e293756b8ae36d14c409ac3
   WHToast: 11a17a3f09f5f733e32bd6f3338919a448cbb719
 
-PODFILE CHECKSUM: e300f61bb610a4523b0c7092bb890722f6a7d9a2
+PODFILE CHECKSUM: 8831a470cf9b12091df9e23610c7d20c6f98ee3f
 
 COCOAPODS: 1.10.1
