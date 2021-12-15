@@ -130,12 +130,12 @@
 			children = (
 				CA8F6B6E24D29CE3009489E6 /* NetworkReachability.h */,
 				CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */,
+				CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */,
 				CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */,
 				CAA070BD246664CE0086B0A7 /* NTESDottedLineProgress.h */,
 				CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */,
 				CAA070BE246664CE0086B0A7 /* NTESToastView.h */,
 				CAA070BA246664CE0086B0A7 /* NTESToastView.m */,
-				CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -532,7 +532,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
+				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -560,7 +560,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
+				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
