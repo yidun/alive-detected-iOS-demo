@@ -52,9 +52,6 @@
 		CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NTESLiveDetect.h"; sourceTree = "<group>"; };
 		CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTimeoutToastView.m; sourceTree = "<group>"; };
 		CAA070D1246665C90086B0A7 /* NTESTimeoutToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTimeoutToastView.h; sourceTree = "<group>"; };
-		CAB06BD12484DE320079CD00 /* NTESLiveDetect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NTESLiveDetect.framework; path = SDK/NTESLiveDetect.framework; sourceTree = "<group>"; };
-		CAB06BD22484DE320079CD00 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = SDK/opencv2.framework; sourceTree = "<group>"; };
-		CAB06BD32484DE320079CD00 /* MNN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MNN.framework; path = SDK/MNN.framework; sourceTree = "<group>"; };
 		DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "活体检测Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1F9472234ED6F400EDB465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC1F9473234ED6F400EDB465 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -113,9 +110,6 @@
 		C069EB17370F5EBB0C5EE2BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CAB06BD32484DE320079CD00 /* MNN.framework */,
-				CAB06BD12484DE320079CD00 /* NTESLiveDetect.framework */,
-				CAB06BD22484DE320079CD00 /* opencv2.framework */,
 				DC1F94B2234F59D100EDB465 /* CoreData.framework */,
 				DC1F94B0234F59CC00EDB465 /* AssetsLibrary.framework */,
 				DC1F94AE234F59B900EDB465 /* CoreMedia.framework */,
@@ -520,7 +514,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = XB333SWTAF;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
@@ -529,7 +526,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
 				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
@@ -548,7 +548,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = XB333SWTAF;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = NTESLiveDetectPublicDemo/Info.plist;
@@ -557,7 +560,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
 				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
