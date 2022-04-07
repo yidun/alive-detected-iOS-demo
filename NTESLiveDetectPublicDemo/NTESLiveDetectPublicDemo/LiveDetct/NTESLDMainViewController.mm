@@ -145,6 +145,7 @@ static NSOperationQueue *_queue;
     NSString *version = [self.detector getSDKVersion];
     NSLog(@"=======%@",version);
     __weak __typeof(self)weakSelf = self;
+    
     [self.detector startLiveDetectWithBusinessID:@"请输入易盾业务ID" actionsHandler:^(NSDictionary * _Nonnull params) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.mainView.activityIndicator stopAnimating];
@@ -157,10 +158,7 @@ static NSOperationQueue *_queue;
             }
         });
     } checkingHandler:^{
-        weakSelf.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        weakSelf.hud.mode = MBProgressHUDModeAnnularDeterminate;
-        weakSelf.hud.label.text = @"图片正在进行云端检测。。。";
-        [weakSelf.hud showAnimated:YES];
+        
     } completionHandler:^(NTESLDStatus status, NSDictionary * _Nullable params) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.params = params;
