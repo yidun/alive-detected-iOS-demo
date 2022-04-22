@@ -29,7 +29,11 @@
     [self __initBottomView];
 }
 
-- (void)startLiveDetect {
+- (void)startLiveDetect:(UIButton *)sender {
+    sender.enabled = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        sender.enabled = YES;
+    });
     NTESLDMainViewController *vc = [[NTESLDMainViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -143,7 +147,7 @@
     startDetectButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15*KWidthScale];
     startDetectButton.layer.cornerRadius = 44.0*KHeightScale/2;
     startDetectButton.layer.masksToBounds = YES;
-    [startDetectButton addTarget:self action:@selector(startLiveDetect) forControlEvents:UIControlEventTouchUpInside];
+    [startDetectButton addTarget:self action:@selector(startLiveDetect:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startDetectButton];
     [startDetectButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(thirdGreenIconView.mas_bottom).offset(76*KHeightScale);

@@ -46,7 +46,7 @@ static NSOperationQueue *_queue;
 
     WeakSelf(self);
     [NetworkReachability AFNReachability:^(AFNetworkReachabilityStatus status) {
-        [weakSelf replyLoading];
+        [self startLiveDetect];
     }];
     
     if (@available(iOS 13.0, *)) {
@@ -98,8 +98,7 @@ static NSOperationQueue *_queue;
 
 - (void)__initDetector {
     self.detector = [[NTESLiveDetectManager alloc] initWithImageView:self.mainView.cameraImage withDetectSensit:NTESSensitNormal];
-    [self startLiveDetect];
-//
+    NSString *version = [self.detector getSDKVersion];
     CGFloat brightness = [UIScreen mainScreen].brightness;
     self.value = brightness;
 //    [self compareCurrentBrightness:brightness];
@@ -140,6 +139,9 @@ static NSOperationQueue *_queue;
 }
 
 - (void)startLiveDetect {
+    [self __initDetectorView];
+    [self __initDetector];
+    
     [self.mainView.activityIndicator startAnimating];
     [self.detector setTimeoutInterval:20];
     NSString *version = [self.detector getSDKVersion];
@@ -274,6 +276,10 @@ static NSOperationQueue *_queue;
 
 #pragma mark - NTESTimeoutToastViewDelegate
 - (void)retryButtonDidTipped:(UIButton *)sender {
+    sender.enabled = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        sender.enabled = YES;
+    });
     [self replyLoading];
 }
 
@@ -285,8 +291,7 @@ static NSOperationQueue *_queue;
     self.mainView = nil;
     self.detector = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self __initDetectorView];
-    [self __initDetector];
+    [self startLiveDetect];
 }
 
 - (void)backHomePageButtonDidTipped:(UIButton *)sender {
