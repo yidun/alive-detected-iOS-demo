@@ -17,6 +17,8 @@
 		CAA070C1246664CE0086B0A7 /* NTESDottedLineProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BB246664CE0086B0A7 /* NTESDottedLineProgress.m */; };
 		CAA070C2246664CE0086B0A7 /* UIColor+NTESLiveDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070BC246664CE0086B0A7 /* UIColor+NTESLiveDetect.m */; };
 		CAA070D2246665C90086B0A7 /* NTESTimeoutToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */; };
+		CAD16A62282B881E00BE7B9C /* NSArray+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD16A61282B881E00BE7B9C /* NSArray+NTES.m */; };
+		CAD16A65282B885700BE7B9C /* NSString+NTESLiveDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD16A63282B885600BE7B9C /* NSString+NTESLiveDetect.m */; };
 		DC1F9474234ED6F400EDB465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9473234ED6F400EDB465 /* AppDelegate.m */; };
 		DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1F9476234ED6F400EDB465 /* SceneDelegate.m */; };
 		DC1F947D234ED6F400EDB465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1F947B234ED6F400EDB465 /* Main.storyboard */; };
@@ -52,6 +54,10 @@
 		CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NTESLiveDetect.h"; sourceTree = "<group>"; };
 		CAA070D0246665C90086B0A7 /* NTESTimeoutToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTimeoutToastView.m; sourceTree = "<group>"; };
 		CAA070D1246665C90086B0A7 /* NTESTimeoutToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTimeoutToastView.h; sourceTree = "<group>"; };
+		CAD16A60282B881E00BE7B9C /* NSArray+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NTES.h"; sourceTree = "<group>"; };
+		CAD16A61282B881E00BE7B9C /* NSArray+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NTES.m"; sourceTree = "<group>"; };
+		CAD16A63282B885600BE7B9C /* NSString+NTESLiveDetect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NTESLiveDetect.m"; sourceTree = "<group>"; };
+		CAD16A64282B885700BE7B9C /* NSString+NTESLiveDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NTESLiveDetect.h"; sourceTree = "<group>"; };
 		DC1F946F234ED6F400EDB465 /* 活体检测Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "活体检测Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1F9472234ED6F400EDB465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC1F9473234ED6F400EDB465 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 		CAA070B9246664CE0086B0A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CAD16A60282B881E00BE7B9C /* NSArray+NTES.h */,
+				CAD16A61282B881E00BE7B9C /* NSArray+NTES.m */,
+				CAD16A64282B885700BE7B9C /* NSString+NTESLiveDetect.h */,
+				CAD16A63282B885600BE7B9C /* NSString+NTESLiveDetect.m */,
 				CA8F6B6E24D29CE3009489E6 /* NetworkReachability.h */,
 				CA8F6B6D24D29CE3009489E6 /* NetworkReachability.m */,
 				CAA070BF246664CE0086B0A7 /* UIColor+NTESLiveDetect.h */,
@@ -355,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1F9474234ED6F400EDB465 /* AppDelegate.m in Sources */,
+				CAD16A62282B881E00BE7B9C /* NSArray+NTES.m in Sources */,
 				DC1F948E234ED78F00EDB465 /* NTESLDHomePageViewController.m in Sources */,
 				DC1F9496234EDDF000EDB465 /* NTESBaseViewController.m in Sources */,
 				DC1F949A234F2EE400EDB465 /* NTESLDSuccessViewController.m in Sources */,
@@ -363,6 +374,7 @@
 				DC1F94B62350275400EDB465 /* NTESLDMainViewController.mm in Sources */,
 				CAA070D2246665C90086B0A7 /* NTESTimeoutToastView.m in Sources */,
 				DC1F9477234ED6F400EDB465 /* SceneDelegate.m in Sources */,
+				CAD16A65282B885700BE7B9C /* NSString+NTESLiveDetect.m in Sources */,
 				CA8F6B6F24D29CE3009489E6 /* NetworkReachability.m in Sources */,
 				CAA070C0246664CE0086B0A7 /* NTESToastView.m in Sources */,
 				DC1F94DD235415DC00EDB465 /* NTESLiveDetectView.m in Sources */,
