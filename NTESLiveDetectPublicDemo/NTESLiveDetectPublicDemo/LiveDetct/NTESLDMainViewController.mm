@@ -102,7 +102,7 @@ static NSOperationQueue *_queue;
     CGFloat brightness = [UIScreen mainScreen].brightness;
     self.value = brightness;
 //    [self compareCurrentBrightness:brightness];
-    [UIScreen mainScreen].brightness = 0.8;
+    [UIScreen mainScreen].brightness = 0.6;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveDetectStatusChange:) name:@"NTESLDNotificationStatusChange" object:nil];
     // 监控app进入后台
@@ -118,7 +118,7 @@ static NSOperationQueue *_queue;
 }
 
 - (void)didBecomeActive {
-    [UIScreen mainScreen].brightness = 0.8;
+    [UIScreen mainScreen].brightness = 0.6;
 }
 
 - (void)saveDefaultBrightness:(NSNotification *)notification {
@@ -131,7 +131,7 @@ static NSOperationQueue *_queue;
     NSDecimalNumber *num1 = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f",brightness]];
      NSDecimalNumberHandler *numHandler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundBankers scale:1 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
      NSString *str1 = [[num1 decimalNumberByRoundingAccordingToBehavior:numHandler] stringValue];
-     if (![str1 isEqualToString:@"0.8"]) {
+     if (![str1 isEqualToString:@"0.6"]) {
        self.value = [UIScreen mainScreen].brightness;
      } else {
          
