@@ -15,8 +15,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NTESDottedLineProgress.h"
 #import "UIColor+NTESLiveDetect.h"
-#import "NSString+NTESLiveDetect.h"
-#import "NSArray+NTES.h"
 
 #define DegreesToRadian(x) (M_PI * (x) / 180.0)
 
@@ -557,5 +555,6 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 }
 
 @end
+
 
 
