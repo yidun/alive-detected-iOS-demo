@@ -6,8 +6,6 @@
 //  Copyright © 2019 Ke Xu. All rights reserved.
 //
 
-
-
 #import "NTESLiveDetectView.h"
 #import <Masonry.h>
 #import "LDDemoDefines.h"
@@ -17,12 +15,6 @@
 #import "UIColor+NTESLiveDetect.h"
 
 #define DegreesToRadian(x) (M_PI * (x) / 180.0)
-
-typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
-    NTESLiveDetectRGBLocationNone,  // 只有动作活体
-    NTESLiveDetectRGBLocationFront, // rgb活体在动作活体之前
-    NTESLiveDetectRGBLocationBack,  // rgb活体在动作活体之后
-};
 
 @interface NTESLiveDetectView ()
 
@@ -38,7 +30,7 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 
 @property (nonatomic, strong) UIView *actionIndexView;
 
-// 已完成的动作活体动作个数
+// 已完成的动作个数
 @property (nonatomic, assign) NSUInteger actionsCount;
 
 // 动图数组
@@ -47,7 +39,7 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 // 音频数组
 @property (nonatomic, copy) NSArray *musicArray;
 
-// 活体动作序列
+// 动作序列
 @property (nonatomic, copy) NSString *actions;
 
 // 底部进度标识view组
@@ -76,16 +68,6 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 
 @property (nonatomic, strong) UILabel *fuzzyImage;
 
-@property (nonatomic, assign) BOOL rgbIsFirst;
-
-// rgb完成动作数量
-@property (nonatomic, assign) NSUInteger rgbActionsCount;
-// rgb完成动作数量
-@property (nonatomic, assign) NSUInteger liveActionsCount;
-
-@property (nonatomic, assign) NTESLiveDetectRGBLocation location;
-
-
 @end
 
 @implementation NTESLiveDetectView
@@ -94,8 +76,6 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         self.actionsCount = 0;
-        self.rgbActionsCount = 0;
-        self.liveActionsCount = 0;
         self.shouldPlay = YES;
         self.imageArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
         self.musicArray = @[@"", @"turn-right", @"turn-left", @"open-mouth", @"open-eyes"];
@@ -112,35 +92,22 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
     [self __initVoiceButton];
     [self __initActivityIndicator];
     [self __initTitle];
+    [self transparentCutRoundArea];
 }
 
 - (void)showActionTips:(NSString *)actions {
     self.actions = actions;
-    NSCharacterSet *nonDigitCharacterSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-    self.liveActionsCount = [[actions componentsSeparatedByCharactersInSet:nonDigitCharacterSet] componentsJoinedByString:@""].length;
-    
-    NSString *rgbString = [actions substringFromIndex:actions.length -1];
-    if (self.liveActionsCount == actions.length) {
-        self.location = NTESLiveDetectRGBLocationNone;
-    } else if ([rgbString isEqualToString:@"r"] || [rgbString isEqualToString:@"g"] || [rgbString isEqualToString:@"b"]) {
-        self.location = NTESLiveDetectRGBLocationBack;
-    } else {
-        self.location = self.location = NTESLiveDetectRGBLocationFront;
-        _progressView.hidden = YES;
-    }
-    
+    DLog(@"-----actions:%@", self.actions);
     [self __initActionIndexView];
     [self __initFrontImage];
     [self __initActionImage];
     [self __initActionsText];
     [self showFrontImage];
     
-    if (!self.rgbIsFirst) {
-        if (self.timer) {
-            [self.timer invalidate];
-        }
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(circular:) userInfo:nil repeats:YES];
+    if (self.timer) {
+        [self.timer invalidate];
     }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(circular:) userInfo:nil repeats:YES];
 }
 
 - (void)circular:(NSTimer *)timer {
@@ -154,6 +121,7 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 }
 
 - (void)changeTipStatus:(NSDictionary *)infoDict {
+    NSLog(@"%@=======",infoDict);
     NSString *value = [infoDict objectForKey:@"exception"];
     [self showCameraExceptionLabel:value];
     infoDict = [infoDict objectForKey:@"action"];
@@ -162,91 +130,15 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
     if (actionStatus) {
         // 完成某个动作
         self.actionsCount++;
-        if (self.location == NTESLiveDetectRGBLocationNone) { // 动作活体
-            // 完成某个动作
-            // 显示下一个动作
-            
-            if (self.actionsCount < self.actions.length) {
-                NSString *action = [self.actions substringWithRange:NSMakeRange(self.actionsCount, 1)];
-                [self showActionImage:[self.imageArray ntes_objectAtIndex:[action integerValue]]];
-                [self showActionIndex:self.actionsCount-1];
-                [self playActionMusic:[self.musicArray ntes_objectAtIndex:[action integerValue]]];
-                [self showActionTip:@([action integerValue])];
-            }
-        } else if (self.location == NTESLiveDetectRGBLocationFront) {  // rgb在动作活体之前
-            NSString *keyString = [NSString stringWithFormat:@"%@",key];
-            if ([@"r" isEqualToString:keyString]) {
-                _progressView.hidden = YES;
-                self.backgroundColor = [UIColor redColor];
-                self.rgbActionsCount++;
-            } else if ([@"g" isEqualToString:keyString]) {
-                _progressView.hidden = YES;
-                self.backgroundColor = [UIColor greenColor];
-                self.rgbActionsCount++;
-            } else if ([@"b" isEqualToString:keyString]) {
-                _progressView.hidden = YES;
-                self.backgroundColor = [UIColor blueColor];
-                self.rgbActionsCount++;
-            }
-            NSUInteger rgbCount = self.actions.length - self.liveActionsCount;
-            // 显示下一个动作
-            if (self.actionsCount < self.actions.length) {
-                NSString *action = [self.actions substringWithRange:NSMakeRange(self.actionsCount, 1)];
-                if (rgbCount == self.rgbActionsCount) {
-                    WeakSelf(self);
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        self.backgroundColor = [UIColor whiteColor];
-                        weakSelf.progressView.hidden = NO;
-                        [self showActionImage:[self.imageArray ntes_objectAtIndex:[action integerValue]]];
-                        [self showActionIndex:self.actionsCount - 1 - rgbCount];
-                        [self playActionMusic:[self.musicArray ntes_objectAtIndex:[action integerValue]]];
-                        
-                        [self showActionTip:@([action integerValue])];
-                    });
-                
-                } else {
-                    self.statusText = @"请正对手机屏幕";
-                    self.actionsText.text = self.statusText;
-                }
-            }
-        } else { // rgb在动作活体之后
-            NSUInteger rgbCount = self.actions.length - self.liveActionsCount;
-            if (rgbCount != self.rgbActionsCount) {
-                if (self.actionsCount < self.actions.length) {
-                    NSString *action = [self.actions substringWithRange:NSMakeRange(self.actionsCount, 1)];
-                    [self showActionImage:[self.imageArray ntes_objectAtIndex:[action integerValue]]];
-                    [self showActionIndex:self.actionsCount - 1];
-                    [self playActionMusic:[self.musicArray ntes_objectAtIndex:[action integerValue]]];
-                    [self showActionTip:@([action integerValue])];
-                }
-               
-                NSString *rgbAction = [self.actions substringWithRange:NSMakeRange(self.actionsCount - 1, 1)];
-                if ([@"r" isEqualToString:rgbAction] || [@"g" isEqualToString:rgbAction] || [@"b" isEqualToString:rgbAction]) {
-                    if ([@"r" isEqualToString:rgbAction]) {
-                        self.backgroundColor = [UIColor redColor];
-                    } else if ([@"g" isEqualToString:rgbAction]) {
-                        self.backgroundColor = [UIColor greenColor];
-                    } else if ([@"b" isEqualToString:rgbAction]) {
-                        self.backgroundColor = [UIColor blueColor];
-                    }
-                    _progressView.hidden = YES;
-                    self.rgbActionsCount++;
-                    [self showActionTip:@(0)];
-                    [self showActionImage:@""];
-                    if (self.player.isPlaying) {
-                        [self.player stop];
-                    }
-                }
-            } else {
-                [self showActionTip:@(0)];
-                [self showActionImage:[self.imageArray ntes_objectAtIndex:0]];
-                [self playActionMusic:@""];
-            }
+        // 显示下一个动作
+        if (self.actionsCount < self.actions.length) {
+            NSString *action = [self.actions substringWithRange:NSMakeRange(self.actionsCount, 1)];
+            [self showActionImage:[self.imageArray objectAtIndex:[action integerValue]]];
+            [self showActionIndex:self.actionsCount-1];
+            [self playActionMusic:[self.musicArray objectAtIndex:[action integerValue]]];
         }
     }
-}
-
-- (void)showActionTip:(NSNumber *)key {
+    
     switch ([key intValue]) {
         case 0:
             self.statusText = @"请正对手机屏幕";
@@ -304,7 +196,7 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
                break;
        }
        self.detectExceptionLabel.text = statusText;
-        self.fuzzyImage.hidden = NO;
+       self.fuzzyImage.hidden = NO;
        return;
     } else {
         self.detectExceptionLabel.text = @"";
@@ -372,17 +264,15 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 
 - (void)__initImageView {
     self.cameraImage = [[UIImageView alloc] init];
-    self.cameraImage.layer.masksToBounds = YES;
-    self.cameraImage.layer.cornerRadius = imageViewWidth / 2;
     [self addSubview:self.cameraImage];
     [self.cameraImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.top.equalTo(self).mas_offset(120);
+        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
         make.width.equalTo(@(imageViewWidth));
-        make.height.equalTo(@(imageViewWidth));
+        make.height.equalTo(@(imageViewHeight));
     }];
     
-    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2 - 25, 95, imageViewWidth + 50, imageViewWidth + 50) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
+    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2, IS_IPHONE_X ? 50+statusBarHeight + imageViewHeight/8 : 4+statusBarHeight + imageViewHeight/8, imageViewWidth, imageViewHeight) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
     //    _progressView.backgroundColor = [UIColor blackColor];
     _progressView.roundStyle = YES;
     //    _progressView.colorGradient = NO;
@@ -395,18 +285,24 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
     
     self.fuzzyImage = [[UILabel alloc] init];
     self.fuzzyImage.backgroundColor = [UIColor clearColor];
-    [self.cameraImage addSubview:self.fuzzyImage];
+    [self addSubview:self.fuzzyImage];
     [self.fuzzyImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.cameraImage);
-        make.top.equalTo(self.cameraImage).mas_offset(10);
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
         make.width.equalTo(@(imageViewWidth));
-        make.height.mas_equalTo(50);
+        make.height.equalTo(@(imageViewHeight));
     }];
+    
+  UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:DegreesToRadian(-35) endAngle:DegreesToRadian(215) clockwise:NO];
+   CAShapeLayer *cropLayer = [CAShapeLayer layer];
+   cropLayer.path = cropPath.CGPath;
+    cropLayer.fillColor = [[UIColor ntes_colorWithHexString:@"#E2E2E2"] colorWithAlphaComponent:0.9].CGColor;
+   cropLayer.zPosition = 2.0f;
+  [self.fuzzyImage.layer addSublayer:cropLayer];
 }
 
 - (void)__initActionsText {
     self.actionsText = [[UILabel alloc] init];
-    self.actionsText.text = @"请正对手机屏幕";
     self.actionsText.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20*KWidthScale];
     self.actionsText.textColor = UIColorFromHex(0x000000);
     self.actionsText.numberOfLines = 0;
@@ -419,13 +315,7 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 
 - (void)__initActionIndexView {
     // 正面不算入动作序列
-    int indexNumber = 0;
-    if (self.location == NTESLiveDetectRGBLocationNone) {
-        indexNumber = (int)self.actions.length - 1;
-    } else {
-        indexNumber = (int)self.liveActionsCount - 1;
-    }
-    
+    int indexNumber = (int)self.actions.length - 1;
     self.actionIndexView = [[UIView alloc] init];
     [self addSubview:self.actionIndexView];
     CGFloat viewY = IS_IPHONE_X ? (SCREEN_HEIGHT - 45*KWidthScale - 34) : (SCREEN_HEIGHT - 45*KWidthScale);
@@ -456,21 +346,14 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 }
 
 - (void)showActionIndex:(NSUInteger)index {
-    // 正面不算入动作序列
-    if (self.location == NTESLiveDetectRGBLocationBack) {
-        if (index >= self.liveActionsCount - 1) {
-            return;
-        }
-    }
-    
     for (int i=0; i<index; i++) {
-        UILabel *indexLabel = (UILabel *)[self.indexViewArray ntes_objectAtIndex:i];
+        UILabel *indexLabel = (UILabel *)self.indexViewArray[i];
         indexLabel.text = @"";
         indexLabel.backgroundColor = UIColorFromHex(0x2B63FF);
         indexLabel.layer.cornerRadius = 5 * KWidthScale;
         indexLabel.frame = CGRectMake(30*KWidthScale*i+self.leftPadding, 5*KWidthScale, 10*KWidthScale, 10*KWidthScale);
     }
-    UILabel *currentIndexLabel = (UILabel *)[self.indexViewArray ntes_objectAtIndex:index];
+    UILabel *currentIndexLabel = (UILabel *)self.indexViewArray[index];
     currentIndexLabel.backgroundColor = UIColorFromHex(0x2B63FF);
     currentIndexLabel.text = [NSString stringWithFormat:@"%d", (int)(index+1)];
     currentIndexLabel.layer.cornerRadius = 10 * KWidthScale;
@@ -502,16 +385,11 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 
 - (void)showActionImage:(NSString *)imageName {
     // 0——正面，1——右转，2——左转，3——张嘴，4——眨眼
-    if (imageName.length > 0 && imageName) {
-        self.frontImage.hidden = YES;
-        self.actionImage.hidden = NO;
-        NSString *gifImagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"gif"];
-        NSURL *gifImageUrl = [NSURL fileURLWithPath:gifImagePath];
-        [self.actionImage yh_setImage:gifImageUrl];
-    } else {
-        self.frontImage.hidden = NO;
-        self.actionImage.hidden = YES;
-    }
+    self.frontImage.hidden = YES;
+    self.actionImage.hidden = NO;
+    NSString *gifImagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"gif"];
+    NSURL *gifImageUrl = [NSURL fileURLWithPath:gifImagePath];
+    [self.actionImage yh_setImage:gifImageUrl];
 }
 
 - (void)playActionMusic:(NSString *)musicName {
@@ -531,6 +409,31 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 - (void)showFrontImage {
     self.frontImage.hidden = NO;
     self.actionImage.hidden = YES;
+}
+
+//圆形裁剪区域
+-(void)transparentCutRoundArea{
+
+    // 圆形透明区域
+    UIBezierPath *alphaPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, imageViewWidth, imageViewHeight)];
+    UIBezierPath *arcPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius-1 startAngle:0 endAngle:2*M_PI clockwise:NO];
+    [alphaPath appendPath:arcPath];
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.fillColor = [UIColor whiteColor].CGColor;
+    layer.strokeColor = [UIColor whiteColor].CGColor;
+    layer.path = alphaPath.CGPath;
+    layer.fillRule = kCAFillRuleEvenOdd;
+    layer.zPosition = 1.0f;
+    [self.cameraImage.layer addSublayer:layer];
+    
+    // 圆形裁剪框
+    UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:0 endAngle:2*M_PI clockwise:NO];
+    CAShapeLayer *cropLayer = [CAShapeLayer layer];
+    cropLayer.path = cropPath.CGPath;
+    cropLayer.strokeColor = [UIColor whiteColor].CGColor;
+    cropLayer.fillColor = [UIColor clearColor].CGColor;
+    cropLayer.zPosition = 2.0f;
+    [self.cameraImage.layer addSublayer:cropLayer];
 }
 
 - (void)openVoiceButton {
@@ -555,6 +458,5 @@ typedef NS_ENUM(NSUInteger, NTESLiveDetectRGBLocation) {
 }
 
 @end
-
 
 
