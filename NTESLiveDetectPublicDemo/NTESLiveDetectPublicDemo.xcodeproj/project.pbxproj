@@ -254,6 +254,7 @@
 				DC1F946C234ED6F400EDB465 /* Frameworks */,
 				DC1F946D234ED6F400EDB465 /* Resources */,
 				FCF4F7082E0DAF8F90EDAD89 /* [CP] Copy Pods Resources */,
+				3E23A419C94E667C22963FAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,6 +319,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E23A419C94E667C22963FAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NTESLiveDetectPublicDemo/Pods-NTESLiveDetectPublicDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A1806712F627D0BAF961EFDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,7 +562,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
+				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -578,7 +596,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NTESLiveDetectPublicDemo;
 				PRODUCT_NAME = "活体检测Demo";
-				PROVISIONING_PROFILE_SPECIFIER = neteaseGeneralProfile;
+				PROVISIONING_PROFILE_SPECIFIER = wildcardProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
