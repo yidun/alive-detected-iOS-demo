@@ -66,8 +66,6 @@
 
 @property (nonatomic, copy) NSString *statusText;
 
-@property (nonatomic, strong) UILabel *fuzzyImage;
-
 @end
 
 @implementation NTESLiveDetectView
@@ -92,7 +90,6 @@
     [self __initVoiceButton];
     [self __initActivityIndicator];
     [self __initTitle];
-    [self transparentCutRoundArea];
 }
 
 - (void)showActionTips:(NSString *)actions {
@@ -173,7 +170,7 @@
            [self.detectExceptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                make.top.equalTo(self.progressView).mas_offset(50);
                make.centerX.equalTo(self.progressView);
-               make.height.mas_equalTo(10);
+               make.height.mas_equalTo(15);
            }];
        }
 
@@ -196,11 +193,9 @@
                break;
        }
        self.detectExceptionLabel.text = statusText;
-       self.fuzzyImage.hidden = NO;
        return;
     } else {
         self.detectExceptionLabel.text = @"";
-        self.fuzzyImage.hidden = YES;
     }
 }
 
@@ -265,14 +260,16 @@
 - (void)__initImageView {
     self.cameraImage = [[UIImageView alloc] init];
     [self addSubview:self.cameraImage];
+    self.cameraImage.layer.masksToBounds = YES;
+    self.cameraImage.layer.cornerRadius = imageViewWidth / 2;
     [self.cameraImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
+        make.top.equalTo(self).mas_offset(120);
         make.width.equalTo(@(imageViewWidth));
-        make.height.equalTo(@(imageViewHeight));
+        make.height.equalTo(@(imageViewWidth));
     }];
     
-    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2, IS_IPHONE_X ? 50+statusBarHeight + imageViewHeight/8 : 4+statusBarHeight + imageViewHeight/8, imageViewWidth, imageViewHeight) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
+    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2 - 25, 95, imageViewWidth + 50, imageViewWidth + 50) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
     //    _progressView.backgroundColor = [UIColor blackColor];
     _progressView.roundStyle = YES;
     //    _progressView.colorGradient = NO;
@@ -282,23 +279,6 @@
         _progressView.notAnimated = NO;
     _progressView.subdivCount = 90;
     [self addSubview:_progressView];
-    
-    self.fuzzyImage = [[UILabel alloc] init];
-    self.fuzzyImage.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.fuzzyImage];
-    [self.fuzzyImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
-        make.width.equalTo(@(imageViewWidth));
-        make.height.equalTo(@(imageViewHeight));
-    }];
-    
-  UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:DegreesToRadian(-35) endAngle:DegreesToRadian(215) clockwise:NO];
-   CAShapeLayer *cropLayer = [CAShapeLayer layer];
-   cropLayer.path = cropPath.CGPath;
-    cropLayer.fillColor = [[UIColor ntes_colorWithHexString:@"#E2E2E2"] colorWithAlphaComponent:0.9].CGColor;
-   cropLayer.zPosition = 2.0f;
-  [self.fuzzyImage.layer addSublayer:cropLayer];
 }
 
 - (void)__initActionsText {
