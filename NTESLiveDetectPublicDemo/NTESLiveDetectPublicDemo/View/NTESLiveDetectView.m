@@ -92,7 +92,6 @@
     [self __initVoiceButton];
     [self __initActivityIndicator];
     [self __initTitle];
-    [self transparentCutRoundArea];
 }
 
 - (void)showActionTips:(NSString *)actions {
@@ -291,16 +290,9 @@
     [self.fuzzyImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
         make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
-        make.width.equalTo(@(imageViewWidth));
-        make.height.equalTo(@(imageViewHeight));
+        make.width.equalTo(@(50));
+        make.height.equalTo(@(50));
     }];
-    
-  UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:DegreesToRadian(-35) endAngle:DegreesToRadian(215) clockwise:NO];
-   CAShapeLayer *cropLayer = [CAShapeLayer layer];
-   cropLayer.path = cropPath.CGPath;
-    cropLayer.fillColor = [[UIColor ntes_colorWithHexString:@"#E2E2E2"] colorWithAlphaComponent:0.9].CGColor;
-   cropLayer.zPosition = 2.0f;
-  [self.fuzzyImage.layer addSublayer:cropLayer];
 }
 
 - (void)__initActionsText {

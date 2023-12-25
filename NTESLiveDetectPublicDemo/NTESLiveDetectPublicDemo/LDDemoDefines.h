@@ -34,7 +34,7 @@
 #define UIColorFromHex(hexValue)        UIColorFromHexA(hexValue, 1.0f)
 
 #define bottomCopyRightText         @"© 1997-2020 网易公司"
-#define imageViewWidth              (300 * KWidthScale)
+#define imageViewWidth              (260 * KWidthScale)
 // 传入imageView的宽高比应为3:4
 #define imageViewHeight             (imageViewWidth * 4 / 3)
 #define cameraViewRadius            (130 * KWidthScale)
