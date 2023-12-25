@@ -5,8 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'NTESLiveDetectPublicDemo' do
 pod 'Masonry', '~> 1.0.2' 
 pod 'WHToast'
-pod 'NTESLiveDetect', '3.1.2'
+pod 'NTESLiveDetect', '3.1.9'
 pod 'AFNetworking'
 pod 'MBProgressHUD'
+#pod 'NERtcSDK', '4.2.147'
+#pod 'NIMSDK_LITE', '~> 9.9.0'
 
 end

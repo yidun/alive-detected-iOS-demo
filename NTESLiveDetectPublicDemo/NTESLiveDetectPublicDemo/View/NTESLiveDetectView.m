@@ -264,15 +264,17 @@
 
 - (void)__initImageView {
     self.cameraImage = [[UIImageView alloc] init];
+    self.cameraImage.layer.cornerRadius = imageViewWidth/2;
+    self.cameraImage.layer.masksToBounds = YES;
     [self addSubview:self.cameraImage];
     [self.cameraImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.top.equalTo(self).mas_offset(IS_IPHONE_X ? 50+statusBarHeight : 4+statusBarHeight);
+        make.top.equalTo(self).mas_offset(100);
         make.width.equalTo(@(imageViewWidth));
-        make.height.equalTo(@(imageViewHeight));
+        make.height.equalTo(@(imageViewWidth));
     }];
     
-    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2, IS_IPHONE_X ? 50+statusBarHeight + imageViewHeight/8 : 4+statusBarHeight + imageViewHeight/8, imageViewWidth, imageViewHeight) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
+    _progressView = [[NTESDottedLineProgress alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - imageViewWidth) / 2 -20, 80, imageViewWidth + 40, imageViewWidth + 40) startColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] endColor:[UIColor ntes_colorWithHexString:@"#7C49F2"] startAngle:90 strokeWidth:4 strokeLength:20];
     //    _progressView.backgroundColor = [UIColor blackColor];
     _progressView.roundStyle = YES;
     //    _progressView.colorGradient = NO;
@@ -409,31 +411,6 @@
 - (void)showFrontImage {
     self.frontImage.hidden = NO;
     self.actionImage.hidden = YES;
-}
-
-//圆形裁剪区域
--(void)transparentCutRoundArea{
-
-    // 圆形透明区域
-    UIBezierPath *alphaPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, imageViewWidth, imageViewHeight)];
-    UIBezierPath *arcPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius-1 startAngle:0 endAngle:2*M_PI clockwise:NO];
-    [alphaPath appendPath:arcPath];
-    CAShapeLayer *layer = [CAShapeLayer layer];
-    layer.fillColor = [UIColor whiteColor].CGColor;
-    layer.strokeColor = [UIColor whiteColor].CGColor;
-    layer.path = alphaPath.CGPath;
-    layer.fillRule = kCAFillRuleEvenOdd;
-    layer.zPosition = 1.0f;
-    [self.cameraImage.layer addSublayer:layer];
-    
-    // 圆形裁剪框
-    UIBezierPath *cropPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(imageViewWidth/2, imageViewHeight/2) radius:cameraViewRadius startAngle:0 endAngle:2*M_PI clockwise:NO];
-    CAShapeLayer *cropLayer = [CAShapeLayer layer];
-    cropLayer.path = cropPath.CGPath;
-    cropLayer.strokeColor = [UIColor whiteColor].CGColor;
-    cropLayer.fillColor = [UIColor clearColor].CGColor;
-    cropLayer.zPosition = 2.0f;
-    [self.cameraImage.layer addSublayer:cropLayer];
 }
 
 - (void)openVoiceButton {
